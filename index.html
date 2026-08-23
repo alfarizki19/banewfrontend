@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Boss Arms — Configurator</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/calibreCard.css">
+    <link rel="stylesheet" href="styles/menuCard.css">
+    <link rel="stylesheet" href="styles/partCard.css">
+    <link rel="stylesheet" href="styles/productCard.css">
+    <link rel="stylesheet" href="styles/buttonCard.css">
+    <link rel="stylesheet" href="styles/variantCard.css">
+    <link rel="stylesheet" href="styles/cart.css">
+</head>
+<body>
+    <div id="app-wrapper">
+        <main id="viewer-area">
+            <div class="viewer-vignette"></div>
+
+            <div id="brand">
+                <p class="brand-name">BOSS ARMS</p>
+                <p class="brand-tagline">Precision Configured</p>
+            </div>
+
+            <div class="viewer-placeholder">
+                <div class="pulse-placeholder">
+                    <div class="placeholder-main-ring crosshair-ring">
+                        <div class="placeholder-middle-ring crosshair-ring">
+                            <div class="placeholder-inner-ring crosshair-ring">
+                                <span class="icon-placeholder icon-placeholder--lg" aria-hidden="true"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <p class="viewer-hint">AR Platform · Custom Build</p>
+        </main>
+
+        <aside id="right-panel" aria-label="Configuration">
+            <section id="configuration-screen" class="panel-screen">
+                <div id="caliber-view">
+                    <header id="panel-header">
+                        <div class="eyebrow">
+                            <span class="eyebrow-mark"></span>
+                            <p>Configuration Studio</p>
+                        </div>
+                        <h1>Select Caliber</h1>
+                        <p class="panel-lead">Choose a caliber to begin configuring your build.</p>
+                        <div class="metallic-divider"></div>
+                    </header>
+
+                    <nav id="caliber-nav" aria-label="Caliber options">
+                        <button class="calibre-card" type="button" data-caliber="5.56 NATO" id="caliber-556" aria-label="5.56 NATO">
+                            <span class="calibre-card__image" aria-hidden="true"></span>
+                            <span class="calibre-card__text">5.56</span>
+                        </button>
+                        <button class="calibre-card" type="button" data-caliber=".223 Remington" id="caliber-223" aria-label=".223 Remington">
+                            <span class="calibre-card__image" aria-hidden="true"></span>
+                            <span class="calibre-card__text">.223</span>
+                        </button>
+                        <button class="calibre-card" type="button" data-caliber=".300 BLK" id="caliber-300blk" aria-label=".300 BLK">
+                            <span class="calibre-card__image" aria-hidden="true"></span>
+                            <span class="calibre-card__text">.300</span>
+                        </button>
+                        <button class="calibre-card" type="button" data-caliber="9mm Luger" id="caliber-9mm" aria-label="9mm Luger">
+                            <span class="calibre-card__image" aria-hidden="true"></span>
+                            <span class="calibre-card__text">9mm</span>
+                        </button>
+                    </nav>
+                </div>
+
+                <div id="main-menu-view" class="screen-hidden">
+                    <header class="panel-header">
+                        <button class="back-link js-nav-back" type="button" data-back="caliber">
+                            <span class="back-link__mark" aria-hidden="true"></span>
+                            Caliber
+                        </button>
+                        <div class="eyebrow">
+                            <span class="eyebrow-mark"></span>
+                            <p>Configuration Studio</p>
+                        </div>
+                        <h1>Build Your AR</h1>
+                        <p class="panel-lead">Select a section below to begin customizing your build.</p>
+                        <div class="metallic-divider"></div>
+                    </header>
+
+                    <nav id="main-menu-nav" aria-label="Build sections">
+                        <section class="menu-section">
+                            <h2 class="menu-section__label">Upper</h2>
+                            <div class="menu-section__list">
+                                <button class="menu-card" type="button" data-menu="upper-complete">
+                                    <span class="menu-card__body">
+                                        <span class="icon-placeholder menu-card__icon" aria-hidden="true"></span>
+                                        <span class="menu-card__copy">
+                                            <span class="menu-card__title">Upper complete</span>
+                                            <span class="menu-card__meta">Fully assembled upper</span>
+                                        </span>
+                                    </span>
+                                    <span class="icon-placeholder menu-card__chevron" aria-hidden="true"></span>
+                                </button>
+                                <button class="menu-card" type="button" data-menu="upper-striped">
+                                    <span class="menu-card__body">
+                                        <span class="icon-placeholder menu-card__icon" aria-hidden="true"></span>
+                                        <span class="menu-card__copy">
+                                            <span class="menu-card__title">Upper striped</span>
+                                            <span class="menu-card__meta">Stripped upper receiver</span>
+                                        </span>
+                                    </span>
+                                    <span class="icon-placeholder menu-card__chevron" aria-hidden="true"></span>
+                                </button>
+                            </div>
+                        </section>
+
+                        <section class="menu-section">
+                            <h2 class="menu-section__label">Lower</h2>
+                            <div class="menu-section__list">
+                                <button class="menu-card" type="button" data-menu="lower-complete">
+                                    <span class="menu-card__body">
+                                        <span class="icon-placeholder menu-card__icon" aria-hidden="true"></span>
+                                        <span class="menu-card__copy">
+                                            <span class="menu-card__title">Lower complete</span>
+                                            <span class="menu-card__meta">Fully assembled lower</span>
+                                        </span>
+                                    </span>
+                                    <span class="icon-placeholder menu-card__chevron" aria-hidden="true"></span>
+                                </button>
+                                <button class="menu-card" type="button" data-menu="lower-striped">
+                                    <span class="menu-card__body">
+                                        <span class="icon-placeholder menu-card__icon" aria-hidden="true"></span>
+                                        <span class="menu-card__copy">
+                                            <span class="menu-card__title">Lower striped</span>
+                                            <span class="menu-card__meta">Stripped lower receiver</span>
+                                        </span>
+                                    </span>
+                                    <span class="icon-placeholder menu-card__chevron" aria-hidden="true"></span>
+                                </button>
+                            </div>
+                        </section>
+
+                        <section class="menu-section">
+                            <h2 class="menu-section__label">Gear</h2>
+                            <div class="menu-section__list">
+                                <button class="menu-card" type="button" data-menu="gear">
+                                    <span class="menu-card__body">
+                                        <span class="icon-placeholder menu-card__icon" aria-hidden="true"></span>
+                                        <span class="menu-card__copy">
+                                            <span class="menu-card__title">Gear</span>
+                                            <span class="menu-card__meta">Optics, Lights, Accessories</span>
+                                        </span>
+                                    </span>
+                                    <span class="icon-placeholder menu-card__chevron" aria-hidden="true"></span>
+                                </button>
+                            </div>
+                        </section>
+                    </nav>
+                </div>
+
+                <div id="part-upper-view" class="screen-hidden">
+                    <header class="panel-header">
+                        <button class="back-link js-nav-back" type="button" data-back="main">
+                            <span class="back-link__mark" aria-hidden="true"></span>
+                            Main menu
+                        </button>
+                        <div class="eyebrow">
+                            <span class="eyebrow-mark"></span>
+                            <p>Stripped Upper</p>
+                        </div>
+                        <h1>Select Part</h1>
+                        <p class="panel-lead">Choose a part to configure your stripped upper.</p>
+                        <div class="metallic-divider"></div>
+                    </header>
+                    <nav id="part-upper-nav" class="part-nav" aria-label="Stripped upper parts">
+                        <p class="part-section-label">Required</p>
+                        <div class="menu-section__list">
+                        <button class="menu-card" type="button" data-part="upper-receiver" data-part-family="upper">
+                            <span class="menu-card__body"><span class="icon-placeholder menu-card__icon" aria-hidden="true"></span><span class="menu-card__copy"><span class="menu-card__title">Upper Receiver</span></span></span>
+                            <span class="icon-placeholder menu-card__chevron" aria-hidden="true"></span>
+                        </button>
+                        <button class="menu-card" type="button" data-part="barrel" data-part-family="upper">
+                            <span class="menu-card__body"><span class="icon-placeholder menu-card__icon" aria-hidden="true"></span><span class="menu-card__copy"><span class="menu-card__title">Barrel</span></span></span>
+                            <span class="icon-placeholder menu-card__chevron" aria-hidden="true"></span>
+                        </button>
+                        <button class="menu-card" type="button" data-part="handguard" data-part-family="upper">
+                            <span class="menu-card__body"><span class="icon-placeholder menu-card__icon" aria-hidden="true"></span><span class="menu-card__copy"><span class="menu-card__title">Handguard</span></span></span>
+                            <span class="icon-placeholder menu-card__chevron" aria-hidden="true"></span>
+                        </button>
+                        <button class="menu-card" type="button" data-part="gas-block" data-part-family="upper">
+                            <span class="menu-card__body"><span class="icon-placeholder menu-card__icon" aria-hidden="true"></span><span class="menu-card__copy"><span class="menu-card__title">Gas Block</span></span></span>
+                            <span class="icon-placeholder menu-card__chevron" aria-hidden="true"></span>
+                        </button>
+                        <button class="menu-card" type="button" data-part="gas-tube" data-part-family="upper">
+                            <span class="menu-card__body"><span class="icon-placeholder menu-card__icon" aria-hidden="true"></span><span class="menu-card__copy"><span class="menu-card__title">Gas Tube</span></span></span>
+                            <span class="icon-placeholder menu-card__chevron" aria-hidden="true"></span>
+                        </button>
+                        <button class="menu-card" type="button" data-part="muzzle-device" data-part-family="upper">
+                            <span class="menu-card__body"><span class="icon-placeholder menu-card__icon" aria-hidden="true"></span><span class="menu-card__copy"><span class="menu-card__title">Muzzle Device</span></span></span>
+                            <span class="icon-placeholder menu-card__chevron" aria-hidden="true"></span>
+                        </button>
+                        <button class="menu-card" type="button" data-part="bolt-carrier-group" data-part-family="upper">
+                            <span class="menu-card__body"><span class="icon-placeholder menu-card__icon" aria-hidden="true"></span><span class="menu-card__copy"><span class="menu-card__title">Bolt Carrier Group</span></span></span>
+                            <span class="icon-placeholder menu-card__chevron" aria-hidden="true"></span>
+                        </button>
+                        <button class="menu-card" type="button" data-part="charging-handle" data-part-family="upper">
+                            <span class="menu-card__body"><span class="icon-placeholder menu-card__icon" aria-hidden="true"></span><span class="menu-card__copy"><span class="menu-card__title">Charging Handle</span></span></span>
+                            <span class="icon-placeholder menu-card__chevron" aria-hidden="true"></span>
+                        </button>
+                        <button class="menu-card" type="button" data-part="forward-assist" data-part-family="upper">
+                            <span class="menu-card__body"><span class="icon-placeholder menu-card__icon" aria-hidden="true"></span><span class="menu-card__copy"><span class="menu-card__title">Forward Assist</span></span></span>
+                            <span class="icon-placeholder menu-card__chevron" aria-hidden="true"></span>
+                        </button>
+                        </div>
+                        <p class="part-section-label">Optional</p>
+                        <div class="menu-section__list">
+                        <button class="menu-card" type="button" data-part="ejection-port-cover" data-part-family="upper">
+                            <span class="menu-card__body"><span class="icon-placeholder menu-card__icon" aria-hidden="true"></span><span class="menu-card__copy"><span class="menu-card__title">Ejection Port Cover</span></span></span>
+                            <span class="icon-placeholder menu-card__chevron" aria-hidden="true"></span>
+                        </button>
+                        </div>
+                    </nav>
+                </div>
+
+                <div id="part-lower-view" class="screen-hidden">
+                    <header class="panel-header">
+                        <button class="back-link js-nav-back" type="button" data-back="main">
+                            <span class="back-link__mark" aria-hidden="true"></span>
+                            Main menu
+                        </button>
+                        <div class="eyebrow">
+                            <span class="eyebrow-mark"></span>
+                            <p>Stripped Lower</p>
+                        </div>
+                        <h1>Select Part</h1>
+                        <p class="panel-lead">Choose a part to configure your stripped lower.</p>
+                        <div class="metallic-divider"></div>
+                    </header>
+                    <nav id="part-lower-nav" class="part-nav" aria-label="Stripped lower parts">
+                        <button class="menu-card" type="button" data-part="lower-receiver" data-part-family="lower">
+                            <span class="menu-card__body"><span class="icon-placeholder menu-card__icon" aria-hidden="true"></span><span class="menu-card__copy"><span class="menu-card__title">Lower Receiver</span></span></span>
+                            <span class="icon-placeholder menu-card__chevron" aria-hidden="true"></span>
+                        </button>
+                        <button class="menu-card" type="button" data-part="trigger" data-part-family="lower">
+                            <span class="menu-card__body"><span class="icon-placeholder menu-card__icon" aria-hidden="true"></span><span class="menu-card__copy"><span class="menu-card__title">Trigger</span></span></span>
+                            <span class="icon-placeholder menu-card__chevron" aria-hidden="true"></span>
+                        </button>
+                        <button class="menu-card" type="button" data-part="pistol-grip" data-part-family="lower">
+                            <span class="menu-card__body"><span class="icon-placeholder menu-card__icon" aria-hidden="true"></span><span class="menu-card__copy"><span class="menu-card__title">Pistol Grip</span></span></span>
+                            <span class="icon-placeholder menu-card__chevron" aria-hidden="true"></span>
+                        </button>
+                        <button class="menu-card" type="button" data-part="stock" data-part-family="lower">
+                            <span class="menu-card__body"><span class="icon-placeholder menu-card__icon" aria-hidden="true"></span><span class="menu-card__copy"><span class="menu-card__title">Stock</span></span></span>
+                            <span class="icon-placeholder menu-card__chevron" aria-hidden="true"></span>
+                        </button>
+                        <button class="menu-card" type="button" data-part="buffer-system" data-part-family="lower">
+                            <span class="menu-card__body"><span class="icon-placeholder menu-card__icon" aria-hidden="true"></span><span class="menu-card__copy"><span class="menu-card__title">Buffer System</span></span></span>
+                            <span class="icon-placeholder menu-card__chevron" aria-hidden="true"></span>
+                        </button>
+                        <button class="menu-card" type="button" data-part="safety-selector" data-part-family="lower">
+                            <span class="menu-card__body"><span class="icon-placeholder menu-card__icon" aria-hidden="true"></span><span class="menu-card__copy"><span class="menu-card__title">Safety Selector</span></span></span>
+                            <span class="icon-placeholder menu-card__chevron" aria-hidden="true"></span>
+                        </button>
+                        <button class="menu-card" type="button" data-part="magazine" data-part-family="lower">
+                            <span class="menu-card__body"><span class="icon-placeholder menu-card__icon" aria-hidden="true"></span><span class="menu-card__copy"><span class="menu-card__title">Magazine</span></span></span>
+                            <span class="icon-placeholder menu-card__chevron" aria-hidden="true"></span>
+                        </button>
+                        <button class="menu-card" type="button" data-part="magazine-release" data-part-family="lower">
+                            <span class="menu-card__body"><span class="icon-placeholder menu-card__icon" aria-hidden="true"></span><span class="menu-card__copy"><span class="menu-card__title">Magazine Release</span></span></span>
+                            <span class="icon-placeholder menu-card__chevron" aria-hidden="true"></span>
+                        </button>
+                        <button class="menu-card" type="button" data-part="bolt-catch" data-part-family="lower">
+                            <span class="menu-card__body"><span class="icon-placeholder menu-card__icon" aria-hidden="true"></span><span class="menu-card__copy"><span class="menu-card__title">Bolt Catch</span></span></span>
+                            <span class="icon-placeholder menu-card__chevron" aria-hidden="true"></span>
+                        </button>
+                        <button class="menu-card" type="button" data-part="trigger-guard" data-part-family="lower">
+                            <span class="menu-card__body"><span class="icon-placeholder menu-card__icon" aria-hidden="true"></span><span class="menu-card__copy"><span class="menu-card__title">Trigger Guard</span></span></span>
+                            <span class="icon-placeholder menu-card__chevron" aria-hidden="true"></span>
+                        </button>
+                        <button class="menu-card" type="button" data-part="takedown-pin" data-part-family="lower">
+                            <span class="menu-card__body"><span class="icon-placeholder menu-card__icon" aria-hidden="true"></span><span class="menu-card__copy"><span class="menu-card__title">Takedown Pin</span></span></span>
+                            <span class="icon-placeholder menu-card__chevron" aria-hidden="true"></span>
+                        </button>
+                    </nav>
+                </div>
+
+                <div id="product-view" class="screen-hidden" data-product-slot="">
+                    <header class="panel-header">
+                        <button class="back-link js-nav-back" type="button" id="product-back" data-back="main">
+                            <span class="back-link__mark" aria-hidden="true"></span>
+                            Back
+                        </button>
+                        <div class="eyebrow">
+                            <span class="eyebrow-mark"></span>
+                            <p id="product-eyebrow">Products</p>
+                        </div>
+                        <h1 id="product-heading">Select Product</h1>
+                        <p class="panel-lead" id="product-lead">Available products will appear here.</p>
+                        <div class="metallic-divider"></div>
+                    </header>
+                    <nav id="product-list" aria-label="Products">
+                        <article class="product-card" tabindex="0" data-product="placeholder">
+                            <div class="product-card__thumb">
+                                <span class="product-card__badge" aria-hidden="true"></span>
+                                <span class="product-card__info" aria-hidden="true"></span>
+                            </div>
+                            <p class="product-card__title">Product placeholder</p>
+                            <p class="product-card__price">$0<span class="product-card__price-decimal">.00</span></p>
+                        </article>
+                    </nav>
+                </div>
+
+                <footer id="build-summary">
+                    <div class="eyebrow">
+                        <span class="eyebrow-mark"></span>
+                        <p>Build Summary</p>
+                    </div>
+                    <div class="summary-row">
+                        <div>
+                            <p class="summary-kicker">Estimated Total</p>
+                            <p class="summary-note">Excl. taxes &amp; shipping</p>
+                        </div>
+                        <p class="summary-total">$1,782<span>.16</span></p>
+                    </div>
+                    <div class="metallic-divider"></div>
+                    <button id="view-build-btn" class="cta-button" type="button">
+                        <span>View Build</span>
+                        <span class="icon-placeholder cta-button__icon" aria-hidden="true"></span>
+                    </button>
+                    <p class="summary-legal">Taxes and shipping calculated at checkout</p>
+                </footer>
+            </section>
+        </aside>
+
+        <section id="bottom-sheet" data-state="half" aria-label="Caliber selection menu partially expanded">
+            <div id="sheet-drag-zone" role="button" tabindex="0" aria-label="Resize menu">
+                <div id="drag-handle"></div>
+            </div>
+
+            <div id="sheet-content">
+                <header id="sheet-header">
+                    <button class="back-link js-nav-back screen-hidden" id="sheet-back" type="button" data-back="caliber">
+                        <span class="back-link__mark" aria-hidden="true"></span>
+                        Caliber
+                    </button>
+                    <h2 id="sheet-title">Select Caliber</h2>
+                    <p id="sheet-subtitle">Choose a caliber to begin your build.</p>
+                </header>
+
+                <nav id="caliber-group" aria-label="Caliber options">
+                    <button class="calibre-card" type="button" data-caliber="5.56 NATO" data-caliber-id="caliber-556" aria-label="5.56 NATO">
+                        <span class="calibre-card__image" aria-hidden="true"></span>
+                        <span class="calibre-card__text">5.56</span>
+                    </button>
+                    <button class="calibre-card" type="button" data-caliber=".223 Remington" data-caliber-id="caliber-223" aria-label=".223 Remington">
+                        <span class="calibre-card__image" aria-hidden="true"></span>
+                        <span class="calibre-card__text">.223</span>
+                    </button>
+                    <button class="calibre-card" type="button" data-caliber=".300 BLK" data-caliber-id="caliber-300blk" aria-label=".300 BLK">
+                        <span class="calibre-card__image" aria-hidden="true"></span>
+                        <span class="calibre-card__text">.300</span>
+                    </button>
+                    <button class="calibre-card" type="button" data-caliber="9mm Luger" data-caliber-id="caliber-9mm" aria-label="9mm Luger">
+                        <span class="calibre-card__image" aria-hidden="true"></span>
+                        <span class="calibre-card__text">9mm</span>
+                    </button>
+                </nav>
+
+                <nav id="main-menu-group" class="screen-hidden" aria-label="Build sections">
+                    <section class="menu-section">
+                        <h2 class="menu-section__label">Upper</h2>
+                        <div class="menu-section__grid">
+                            <button class="calibre-card" type="button" data-menu="upper-complete" aria-label="Upper complete">
+                                <span class="calibre-card__image" aria-hidden="true"></span>
+                                <span class="calibre-card__text">Complete</span>
+                            </button>
+                            <button class="calibre-card" type="button" data-menu="upper-striped" aria-label="Upper striped">
+                                <span class="calibre-card__image" aria-hidden="true"></span>
+                                <span class="calibre-card__text">Striped</span>
+                            </button>
+                        </div>
+                    </section>
+                    <section class="menu-section">
+                        <h2 class="menu-section__label">Lower</h2>
+                        <div class="menu-section__grid">
+                            <button class="calibre-card" type="button" data-menu="lower-complete" aria-label="Lower complete">
+                                <span class="calibre-card__image" aria-hidden="true"></span>
+                                <span class="calibre-card__text">Complete</span>
+                            </button>
+                            <button class="calibre-card" type="button" data-menu="lower-striped" aria-label="Lower striped">
+                                <span class="calibre-card__image" aria-hidden="true"></span>
+                                <span class="calibre-card__text">Striped</span>
+                            </button>
+                        </div>
+                    </section>
+                    <section class="menu-section menu-section--gear">
+                        <h2 class="menu-section__label">Gear</h2>
+                        <div class="menu-section__grid">
+                            <button class="calibre-card" type="button" data-menu="gear" aria-label="Gear">
+                                <span class="calibre-card__image" aria-hidden="true"></span>
+                                <span class="calibre-card__text">Gear</span>
+                            </button>
+                        </div>
+                    </section>
+                </nav>
+
+                <nav id="part-upper-group" class="part-group screen-hidden" aria-label="Stripped upper parts">
+                    <p class="part-section-label">Required</p>
+                    <div class="part-section-cards">
+                        <button class="component-card" type="button" data-part="upper-receiver" data-part-family="upper">
+                            <span class="component-card__icon" aria-hidden="true"></span>
+                            <span class="component-card__name">Upper Receiver</span>
+                            <span class="icon-placeholder component-card__chevron" aria-hidden="true"></span>
+                        </button>
+                        <button class="component-card" type="button" data-part="barrel" data-part-family="upper">
+                            <span class="component-card__icon" aria-hidden="true"></span>
+                            <span class="component-card__name">Barrel</span>
+                            <span class="icon-placeholder component-card__chevron" aria-hidden="true"></span>
+                        </button>
+                        <button class="component-card" type="button" data-part="handguard" data-part-family="upper">
+                            <span class="component-card__icon" aria-hidden="true"></span>
+                            <span class="component-card__name">Handguard</span>
+                            <span class="icon-placeholder component-card__chevron" aria-hidden="true"></span>
+                        </button>
+                        <button class="component-card" type="button" data-part="gas-block" data-part-family="upper">
+                            <span class="component-card__icon" aria-hidden="true"></span>
+                            <span class="component-card__name">Gas Block</span>
+                            <span class="icon-placeholder component-card__chevron" aria-hidden="true"></span>
+                        </button>
+                        <button class="component-card" type="button" data-part="gas-tube" data-part-family="upper">
+                            <span class="component-card__icon" aria-hidden="true"></span>
+                            <span class="component-card__name">Gas Tube</span>
+                            <span class="icon-placeholder component-card__chevron" aria-hidden="true"></span>
+                        </button>
+                        <button class="component-card" type="button" data-part="muzzle-device" data-part-family="upper">
+                            <span class="component-card__icon" aria-hidden="true"></span>
+                            <span class="component-card__name">Muzzle Device</span>
+                            <span class="icon-placeholder component-card__chevron" aria-hidden="true"></span>
+                        </button>
+                        <button class="component-card" type="button" data-part="bolt-carrier-group" data-part-family="upper">
+                            <span class="component-card__icon" aria-hidden="true"></span>
+                            <span class="component-card__name">Bolt Carrier Group</span>
+                            <span class="icon-placeholder component-card__chevron" aria-hidden="true"></span>
+                        </button>
+                        <button class="component-card" type="button" data-part="charging-handle" data-part-family="upper">
+                            <span class="component-card__icon" aria-hidden="true"></span>
+                            <span class="component-card__name">Charging Handle</span>
+                            <span class="icon-placeholder component-card__chevron" aria-hidden="true"></span>
+                        </button>
+                        <button class="component-card" type="button" data-part="forward-assist" data-part-family="upper">
+                            <span class="component-card__icon" aria-hidden="true"></span>
+                            <span class="component-card__name">Forward Assist</span>
+                            <span class="icon-placeholder component-card__chevron" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                    <p class="part-section-label">Optional</p>
+                    <div class="part-section-cards">
+                        <button class="component-card" type="button" data-part="ejection-port-cover" data-part-family="upper">
+                            <span class="component-card__icon" aria-hidden="true"></span>
+                            <span class="component-card__name">Ejection Port Cover</span>
+                            <span class="icon-placeholder component-card__chevron" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                </nav>
+
+                <nav id="part-lower-group" class="part-group screen-hidden" aria-label="Stripped lower parts">
+                    <p class="part-section-label">Required</p>
+                    <div class="part-section-cards">
+                        <button class="component-card" type="button" data-part="lower-receiver" data-part-family="lower">
+                            <span class="component-card__icon" aria-hidden="true"></span>
+                            <span class="component-card__name">Lower Receiver</span>
+                            <span class="icon-placeholder component-card__chevron" aria-hidden="true"></span>
+                        </button>
+                        <button class="component-card" type="button" data-part="trigger" data-part-family="lower">
+                            <span class="component-card__icon" aria-hidden="true"></span>
+                            <span class="component-card__name">Trigger</span>
+                            <span class="icon-placeholder component-card__chevron" aria-hidden="true"></span>
+                        </button>
+                        <button class="component-card" type="button" data-part="pistol-grip" data-part-family="lower">
+                            <span class="component-card__icon" aria-hidden="true"></span>
+                            <span class="component-card__name">Pistol Grip</span>
+                            <span class="icon-placeholder component-card__chevron" aria-hidden="true"></span>
+                        </button>
+                        <button class="component-card" type="button" data-part="stock" data-part-family="lower">
+                            <span class="component-card__icon" aria-hidden="true"></span>
+                            <span class="component-card__name">Stock</span>
+                            <span class="icon-placeholder component-card__chevron" aria-hidden="true"></span>
+                        </button>
+                        <button class="component-card" type="button" data-part="buffer-system" data-part-family="lower">
+                            <span class="component-card__icon" aria-hidden="true"></span>
+                            <span class="component-card__name">Buffer System</span>
+                            <span class="icon-placeholder component-card__chevron" aria-hidden="true"></span>
+                        </button>
+                        <button class="component-card" type="button" data-part="safety-selector" data-part-family="lower">
+                            <span class="component-card__icon" aria-hidden="true"></span>
+                            <span class="component-card__name">Safety Selector</span>
+                            <span class="icon-placeholder component-card__chevron" aria-hidden="true"></span>
+                        </button>
+                        <button class="component-card" type="button" data-part="magazine" data-part-family="lower">
+                            <span class="component-card__icon" aria-hidden="true"></span>
+                            <span class="component-card__name">Magazine</span>
+                            <span class="icon-placeholder component-card__chevron" aria-hidden="true"></span>
+                        </button>
+                        <button class="component-card" type="button" data-part="magazine-release" data-part-family="lower">
+                            <span class="component-card__icon" aria-hidden="true"></span>
+                            <span class="component-card__name">Magazine Release</span>
+                            <span class="icon-placeholder component-card__chevron" aria-hidden="true"></span>
+                        </button>
+                        <button class="component-card" type="button" data-part="bolt-catch" data-part-family="lower">
+                            <span class="component-card__icon" aria-hidden="true"></span>
+                            <span class="component-card__name">Bolt Catch</span>
+                            <span class="icon-placeholder component-card__chevron" aria-hidden="true"></span>
+                        </button>
+                        <button class="component-card" type="button" data-part="trigger-guard" data-part-family="lower">
+                            <span class="component-card__icon" aria-hidden="true"></span>
+                            <span class="component-card__name">Trigger Guard</span>
+                            <span class="icon-placeholder component-card__chevron" aria-hidden="true"></span>
+                        </button>
+                        <button class="component-card" type="button" data-part="takedown-pin" data-part-family="lower">
+                            <span class="component-card__icon" aria-hidden="true"></span>
+                            <span class="component-card__name">Takedown Pin</span>
+                            <span class="icon-placeholder component-card__chevron" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                </nav>
+
+                <nav id="product-group" class="screen-hidden" aria-label="Products">
+                    <article class="product-card" tabindex="0" data-product="placeholder">
+                        <div class="product-card__thumb">
+                            <span class="product-card__badge" aria-hidden="true"></span>
+                            <span class="product-card__info" aria-hidden="true"></span>
+                        </div>
+                        <p class="product-card__title">Product placeholder</p>
+                        <p class="product-card__price">$0<span class="product-card__price-decimal">.00</span></p>
+                    </article>
+                </nav>
+
+                <footer id="sheet-summary">
+                    <div>
+                        <span class="sheet-summary__label">Total</span>
+                        <span class="sheet-summary__price">$1,782.16</span>
+                    </div>
+                    <button id="cart-button" class="icon-cta" type="button" aria-label="View build">
+                        <span class="icon-placeholder icon-cta__icon" aria-hidden="true"></span>
+                    </button>
+                </footer>
+            </div>
+        </section>
+
+        <aside id="cart-overlay" aria-hidden="true" aria-label="Build summary">
+            <div class="cart-panel">
+                <div class="cart-panel__top">
+                    <button class="back-link js-cart-close" type="button">
+                        <span class="back-link__mark" aria-hidden="true"></span>
+                        Back to Build
+                    </button>
+                </div>
+                <header class="cart-panel__header">
+                    <div class="eyebrow">
+                        <span class="eyebrow-mark"></span>
+                        <p>Build Summary</p>
+                    </div>
+                    <h1>Your Build</h1>
+                    <p class="cart-panel__lead">Review your selected components before checkout.</p>
+                    <div class="caliber-summary">
+                        <span class="caliber-summary__label">Caliber</span>
+                        <span class="caliber-summary__value js-cart-caliber">—</span>
+                    </div>
+                </header>
+                <div class="cart-panel__rule"></div>
+                <div class="cart-panel__scroll">
+                    <section class="build-group">
+                        <p class="group-label">Upper</p>
+                        <div class="build-item">
+                            <div class="item-info">
+                                <p class="item-slot">Upper</p>
+                                <p class="item-title">Not selected</p>
+                                <p class="item-price">$0.00</p>
+                            </div>
+                            <button class="item-action" type="button" aria-label="Edit upper" data-cart-edit="upper">
+                                <span class="item-action__mark" aria-hidden="true"></span>
+                            </button>
+                        </div>
+                    </section>
+                    <section class="build-group">
+                        <p class="group-label">Lower</p>
+                        <div class="build-item">
+                            <div class="item-info">
+                                <p class="item-slot">Lower</p>
+                                <p class="item-title">Not selected</p>
+                                <p class="item-price">$0.00</p>
+                            </div>
+                            <button class="item-action" type="button" aria-label="Edit lower" data-cart-edit="lower">
+                                <span class="item-action__mark" aria-hidden="true"></span>
+                            </button>
+                        </div>
+                    </section>
+                    <section class="build-group">
+                        <p class="group-label">Gear</p>
+                        <p class="gear-empty">No gear selected.</p>
+                    </section>
+                </div>
+                <footer class="cart-panel__footer">
+                    <div class="cart-subtotal">
+                        <span class="cart-subtotal__label">Subtotal</span>
+                        <span class="cart-subtotal__value">$0.00</span>
+                    </div>
+                    <p class="cart-panel__note">Taxes and shipping calculated at checkout.</p>
+                    <button class="cta-button js-checkout" type="button" id="checkout-btn">
+                        <span>Checkout</span>
+                    </button>
+                </footer>
+            </div>
+        </aside>
+    </div>
+
+    <script src="scripts/systemMenu.js"></script>
+</body>
+</html>

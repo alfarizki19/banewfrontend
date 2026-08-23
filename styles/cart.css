@@ -1,0 +1,246 @@
+.cart-panel {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 0;
+    width: 100%;
+    background: var(--panel);
+}
+
+.cart-panel__top {
+    flex-shrink: 0;
+    padding: 20px 20px 12px;
+}
+
+.cart-panel__header {
+    flex-shrink: 0;
+    padding: 8px 20px 16px;
+}
+
+.cart-panel__header h1,
+.cart-panel__header h2 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+}
+
+.cart-panel__lead {
+    margin: 6px 0 0;
+    color: var(--text-sec);
+    font-size: 10.5px;
+    line-height: 1.5;
+}
+
+.caliber-summary {
+    margin-top: 16px;
+    padding: 10px 12px;
+    border: 1px solid var(--divider-2);
+    border-radius: 8px;
+    background: var(--icon-grad);
+}
+
+.caliber-summary__label {
+    display: block;
+    color: var(--text-sec);
+    font-size: 8.5px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+.caliber-summary__value {
+    display: block;
+    margin-top: 4px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.cart-panel__rule {
+    flex-shrink: 0;
+    height: 1px;
+    margin: 0 20px;
+    background: var(--divider-2);
+}
+
+.cart-panel__scroll {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    padding: 16px 20px;
+}
+
+.build-group {
+    margin-bottom: 22px;
+}
+
+.build-group:last-child {
+    margin-bottom: 4px;
+}
+
+.group-label {
+    margin: 0 0 7px;
+    color: var(--text-sec);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.17em;
+    text-transform: uppercase;
+}
+
+.build-item {
+    width: 100%;
+    min-height: 61px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(211, 216, 219, 0.72);
+}
+
+.build-item:last-child {
+    border-bottom: 0;
+}
+
+.item-info {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.item-slot {
+    margin: 0;
+    color: var(--text-sec);
+    font-size: 8.5px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.item-title {
+    margin: 0;
+    color: var(--text-pri);
+    font-size: 11.75px;
+    line-height: 1.28;
+    font-weight: 600;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+}
+
+.item-price {
+    margin: 1px 0 0;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.item-action {
+    width: 28px;
+    height: 28px;
+    padding: 0;
+    border: 0;
+    border-radius: 7px;
+    background: transparent;
+    cursor: pointer;
+}
+
+.item-action:hover {
+    background: #eef0f2;
+}
+
+.item-action__mark {
+    display: block;
+    width: 10px;
+    height: 10px;
+    margin: 0 auto;
+    border-radius: 2px;
+    background: var(--divider);
+}
+
+.gear-empty {
+    margin: 0;
+    padding: 12px 0 4px;
+    color: var(--text-sec);
+    font-size: 10px;
+    line-height: 1.4;
+}
+
+.cart-panel__footer {
+    flex-shrink: 0;
+    padding: 16px 20px 20px;
+    border-top: 1px solid var(--divider-2);
+    background: var(--panel);
+}
+
+.cart-subtotal {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 4px;
+}
+
+.cart-subtotal__label {
+    color: var(--text-sec);
+    font-size: 10.5px;
+    font-weight: 500;
+}
+
+.cart-subtotal__value {
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+}
+
+.cart-panel__note {
+    margin: 0 0 14px;
+    color: var(--text-sec);
+    font-size: 9px;
+    line-height: 1.4;
+}
+
+#cart-overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 40;
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    height: 100%;
+    overflow: hidden;
+    background: var(--panel);
+    box-shadow: -8px 0 28px rgba(70, 78, 84, 0.18);
+    transform: translateX(100%);
+    visibility: hidden;
+    pointer-events: none;
+    transition:
+        transform 0.32s cubic-bezier(0.22, 0.8, 0.32, 1),
+        visibility 0s linear 0.32s;
+}
+
+@media (min-width: 1280px) {
+    #cart-overlay {
+        width: 320px;
+    }
+}
+
+#cart-overlay.is-open {
+    transform: translateX(0);
+    visibility: visible;
+    pointer-events: auto;
+    transition:
+        transform 0.32s cubic-bezier(0.22, 0.8, 0.32, 1),
+        visibility 0s linear 0s;
+}
+
+@media (max-width: 900px) {
+    #cart-overlay {
+        width: 100%;
+        min-width: 0;
+        max-width: none;
+    }
+}

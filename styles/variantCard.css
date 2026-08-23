@@ -1,0 +1,9 @@
+.calibre-card.is-selected {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 2px rgba(101, 112, 121, 0.14);
+}
+
+.calibre-card.is-selected .calibre-card__image {
+    border-color: var(--accent);
+    background: linear-gradient(135deg, #e4e8ea 0%, #cfd5d8 100%);
+}
