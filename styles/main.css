@@ -72,6 +72,26 @@ button {
     border-right: 1px solid var(--divider);
 }
 
+.sketchfab-viewer {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.sketchfab-embed-wrapper {
+    width: 100%;
+    height: 100%;
+}
+
+.sketchfab-embed-wrapper iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
 .viewer-vignette {
     position: absolute;
     inset: 0;
@@ -115,6 +135,10 @@ button {
     justify-content: center;
     pointer-events: none;
     z-index: 0;
+}
+
+.viewer-placeholder--hidden {
+    display: none;
 }
 
 .crosshair-ring {
@@ -163,11 +187,20 @@ button {
     }
 }
 
-.viewer-hint {
+.viewer-hint-row {
     position: absolute;
     bottom: 24px;
     left: 32px;
     z-index: 10;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 16px 20px;
+    max-width: calc(100% - 64px);
+    pointer-events: none;
+}
+
+.viewer-hint {
     margin: 0;
     color: var(--text-sec);
     font-size: 10px;
@@ -175,7 +208,60 @@ button {
     letter-spacing: 0.16em;
     text-transform: uppercase;
     opacity: 0.42;
-    pointer-events: none;
+}
+
+.viewer-hint--debug {
+    font-size: 9px;
+    letter-spacing: 0.06em;
+    text-transform: none;
+    font-variant-numeric: tabular-nums;
+    opacity: 0.55;
+}
+
+.viewer-hint--debug[hidden] {
+    display: none !important;
+}
+
+.viewer-debug-wrap {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    pointer-events: auto;
+}
+
+.viewer-debug-wrap[hidden] {
+    display: none !important;
+}
+
+.viewer-debug-copy {
+    flex-shrink: 0;
+    margin: 0;
+    padding: 3px 8px;
+    border: 1px solid rgba(105, 113, 119, 0.35);
+    border-radius: 4px;
+    background: rgba(247, 247, 245, 0.72);
+    color: var(--text-sec);
+    font-family: inherit;
+    font-size: 8px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    cursor: pointer;
+    opacity: 0.72;
+    transition:
+        opacity 0.15s ease,
+        border-color 0.15s ease,
+        background 0.15s ease;
+}
+
+.viewer-debug-copy:hover {
+    opacity: 1;
+    border-color: rgba(105, 113, 119, 0.55);
+    background: rgba(255, 255, 255, 0.88);
+}
+
+.viewer-debug-copy:active {
+    transform: scale(0.97);
 }
 
 #right-panel {
@@ -207,7 +293,8 @@ button {
 #main-menu-view,
 #part-upper-view,
 #part-lower-view,
-#product-view {
+#product-view,
+#variant-view {
     display: flex;
     flex-direction: column;
     flex: 1;
@@ -454,7 +541,7 @@ button {
         height: 52px;
     }
 
-    .viewer-hint {
+    .viewer-hint-row {
         display: none;
     }
 

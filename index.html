@@ -5,18 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Boss Arms — Configurator</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
-    <link rel="stylesheet" href="styles/main.css">
-    <link rel="stylesheet" href="styles/calibreCard.css">
-    <link rel="stylesheet" href="styles/menuCard.css">
-    <link rel="stylesheet" href="styles/partCard.css">
-    <link rel="stylesheet" href="styles/productCard.css">
-    <link rel="stylesheet" href="styles/buttonCard.css">
-    <link rel="stylesheet" href="styles/variantCard.css">
-    <link rel="stylesheet" href="styles/cart.css">
+    <link rel="stylesheet" href="./styles/main.css">
+    <link rel="stylesheet" href="./styles/calibreCard.css">
+    <link rel="stylesheet" href="./styles/menuCard.css">
+    <link rel="stylesheet" href="./styles/partCard.css">
+    <link rel="stylesheet" href="./styles/productCard.css">
+    <link rel="stylesheet" href="./styles/buttonCard.css">
+    <link rel="stylesheet" href="./styles/variantCard.css">
+    <link rel="stylesheet" href="./styles/cart.css">
+    <link rel="stylesheet" href="./styles/loading.css">
 </head>
 <body>
     <div id="app-wrapper">
         <main id="viewer-area">
+            <div id="sketchfab-viewer" class="sketchfab-viewer">
+                <div class="sketchfab-embed-wrapper">
+                    <iframe
+                        id="sketchfab-iframe"
+                        title="AR20260827001"
+                        data-model-id="5c67d3c24bf34eab81af0e48e7f08d6b"
+                        frameborder="0"
+                        allowfullscreen
+                        mozallowfullscreen="true"
+                        webkitallowfullscreen="true"
+                        allow="autoplay; fullscreen; xr-spatial-tracking"
+                        xr-spatial-tracking
+                        execution-while-out-of-viewport
+                        execution-while-not-rendered
+                        web-share
+                        src="https://sketchfab.com/models/5c67d3c24bf34eab81af0e48e7f08d6b/embed?autostart=1&amp;transparent=1&amp;preload=1&amp;ui_controls=0&amp;ui_infos=0&amp;ui_watermark=0&amp;ui_watermark_link=0&amp;ui_stop=0&amp;ui_general_controls=0&amp;ui_inspector=0&amp;ui_fullscreen=0&amp;ui_settings=0&amp;ui_help=0&amp;ui_annotations=0">
+                    </iframe>
+                </div>
+            </div>
+
             <div class="viewer-vignette"></div>
 
             <div id="brand">
@@ -24,7 +45,7 @@
                 <p class="brand-tagline">Precision Configured</p>
             </div>
 
-            <div class="viewer-placeholder">
+            <div class="viewer-placeholder viewer-placeholder--hidden">
                 <div class="pulse-placeholder">
                     <div class="placeholder-main-ring crosshair-ring">
                         <div class="placeholder-middle-ring crosshair-ring">
@@ -36,7 +57,15 @@
                 </div>
             </div>
 
-            <p class="viewer-hint">AR Platform · Custom Build</p>
+            <div class="viewer-hint-row">
+                <p class="viewer-hint">AR Platform · Custom Build</p>
+                <div id="camera-debug-wrap" class="viewer-debug-wrap" hidden>
+                    <p id="camera-debug" class="viewer-hint viewer-hint--debug" aria-live="polite"></p>
+                    <button type="button" id="camera-debug-copy" class="viewer-debug-copy" aria-label="Copy camera coordinates">
+                        Copy
+                    </button>
+                </div>
+            </div>
         </main>
 
         <aside id="right-panel" aria-label="Configuration">
@@ -298,16 +327,28 @@
                         <p class="panel-lead" id="product-lead">Available products will appear here.</p>
                         <div class="metallic-divider"></div>
                     </header>
-                    <nav id="product-list" aria-label="Products">
-                        <article class="product-card" tabindex="0" data-product="placeholder">
-                            <div class="product-card__thumb">
-                                <span class="product-card__badge" aria-hidden="true"></span>
-                                <span class="product-card__info" aria-hidden="true"></span>
-                            </div>
-                            <p class="product-card__title">Product placeholder</p>
-                            <p class="product-card__price">$0<span class="product-card__price-decimal">.00</span></p>
-                        </article>
-                    </nav>
+                    <nav id="product-list" aria-label="Products"></nav>
+                </div>
+
+                <div id="variant-view" class="screen-hidden">
+                    <header class="panel-header">
+                        <button class="back-link js-nav-back" type="button" id="variant-back" data-back="product">
+                            <span class="back-link__mark" aria-hidden="true"></span>
+                            Products
+                        </button>
+                        <div class="eyebrow">
+                            <span class="eyebrow-mark"></span>
+                            <p id="variant-eyebrow">Part</p>
+                        </div>
+                        <h1 id="variant-heading">Select Color</h1>
+                        <p class="panel-lead" id="variant-lead">Choose a finish for your selected product.</p>
+                        <div class="variant-context">
+                            <p class="variant-context__label">Selected product</p>
+                            <p class="variant-context__product" id="variant-product-name"></p>
+                        </div>
+                        <div class="metallic-divider"></div>
+                    </header>
+                    <nav id="variant-list" aria-label="Color variants"></nav>
                 </div>
 
                 <footer id="build-summary">
@@ -524,16 +565,15 @@
                     </div>
                 </nav>
 
-                <nav id="product-group" class="screen-hidden" aria-label="Products">
-                    <article class="product-card" tabindex="0" data-product="placeholder">
-                        <div class="product-card__thumb">
-                            <span class="product-card__badge" aria-hidden="true"></span>
-                            <span class="product-card__info" aria-hidden="true"></span>
-                        </div>
-                        <p class="product-card__title">Product placeholder</p>
-                        <p class="product-card__price">$0<span class="product-card__price-decimal">.00</span></p>
-                    </article>
-                </nav>
+                <nav id="product-group" class="screen-hidden" aria-label="Products"></nav>
+
+                <div id="variant-mobile-block" class="screen-hidden">
+                    <div class="variant-context">
+                        <p class="variant-context__label">Selected product</p>
+                        <p class="variant-context__product" id="variant-product-name-mobile"></p>
+                    </div>
+                    <nav id="variant-group" aria-label="Color variants"></nav>
+                </div>
 
                 <footer id="sheet-summary">
                     <div>
@@ -612,8 +652,37 @@
                 </footer>
             </div>
         </aside>
+
+        <div id="loading-overlay" aria-hidden="false">
+            <div id="loading-popup">
+                <p class="loading-brand">BOSS ARMS</p>
+                <p class="loading-tagline">Precision Configured</p>
+                <div class="loading-bar" aria-label="Loading">
+                    <div class="loading-bar-progress"></div>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <script src="scripts/systemMenu.js"></script>
+    <script src="https://static.sketchfab.com/api/sketchfab-viewer-1.12.1.js"></script>
+    <script src="./scripts/config/cdn.js"></script>
+    <script src="./scripts/config/debug.js"></script>
+    <script src="./scripts/config/sketchfabEmbed.js"></script>
+    <script src="./scripts/config/meshRegistry.js"></script>
+    <script src="./scripts/config/variantCatalog.js"></script>
+    <script src="./scripts/config/productCatalog.js"></script>
+    <script src="./scripts/config/textureUrlBuilder.js"></script>
+    <script src="./scripts/config/cameraPresets.js"></script>
+    <script src="./scripts/sketchfab/sketchfabAPI.js"></script>
+    <script src="./scripts/sketchfab/cameraController.js"></script>
+    <script src="./scripts/sketchfab/cameraDebug.js"></script>
+    <script src="./scripts/controllers/textureCore.js"></script>
+    <script src="./scripts/sketchfab/viewer.js"></script>
+    <script src="./scripts/controllers/modelController.js"></script>
+    <script src="./scripts/controllers/textureController.js"></script>
+    <script src="./scripts/ui/catalogUI.js"></script>
+    <script src="./scripts/controllers/buildController.js"></script>
+    <script src="./scripts/systemMenu.js"></script>
+    <script src="./scripts/loading.js"></script>
 </body>
 </html>

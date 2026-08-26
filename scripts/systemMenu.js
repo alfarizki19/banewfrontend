@@ -15,6 +15,12 @@
     const productEyebrow = document.getElementById("product-eyebrow");
     const productHeading = document.getElementById("product-heading");
     const productLead = document.getElementById("product-lead");
+    const variantView = document.getElementById("variant-view");
+    const variantEyebrow = document.getElementById("variant-eyebrow");
+    const variantHeading = document.getElementById("variant-heading");
+    const variantLead = document.getElementById("variant-lead");
+    const variantProductName = document.getElementById("variant-product-name");
+    const variantProductNameMobile = document.getElementById("variant-product-name-mobile");
     const navBackButtons = document.querySelectorAll(".js-nav-back");
 
     const panelViews = {
@@ -22,7 +28,8 @@
         main: document.getElementById("main-menu-view"),
         "part-upper": document.getElementById("part-upper-view"),
         "part-lower": document.getElementById("part-lower-view"),
-        product: document.getElementById("product-view")
+        product: document.getElementById("product-view"),
+        variant: variantView
     };
 
     const sheetGroups = {
@@ -30,7 +37,8 @@
         main: document.getElementById("main-menu-group"),
         "part-upper": document.getElementById("part-upper-group"),
         "part-lower": document.getElementById("part-lower-group"),
-        product: document.getElementById("product-group")
+        product: document.getElementById("product-group"),
+        variant: document.getElementById("variant-mobile-block")
     };
 
     const cartOverlay = document.getElementById("cart-overlay");
@@ -114,6 +122,13 @@
             subtitle: "Available products will appear here.",
             back: "Back",
             backTarget: "main",
+            showBack: true
+        },
+        variant: {
+            title: "Select Color",
+            subtitle: "Choose a finish for your selected product.",
+            back: "Products",
+            backTarget: "product",
             showBack: true
         }
     };
@@ -290,14 +305,62 @@
         productBackTarget = backTarget;
         productView.dataset.productSlot = slotId;
         productEyebrow.textContent = title;
-        productHeading.textContent = title;
-        productLead.textContent = "Available products will appear here.";
+        productHeading.textContent = "Select Product";
+        productLead.textContent = "Choose a product for your " + title.toLowerCase() + ".";
         productBack.dataset.back = backTarget;
         productBack.lastChild.textContent = backTarget === "main" ? " Main menu" : " Parts";
         sheetCopy.product.title = title;
+        sheetCopy.product.subtitle = productLead.textContent;
         sheetCopy.product.backTarget = backTarget;
         sheetCopy.product.back = backTarget === "main" ? "Main menu" : "Parts";
+
+        if (window.catalogUI) {
+            if (typeof window.catalogUI.resetVariantSelection === "function") {
+                window.catalogUI.resetVariantSelection();
+            }
+            if (typeof window.catalogUI.renderProductList === "function") {
+                window.catalogUI.renderProductList(slotId);
+            }
+        }
+
+        if (window.cameraController && typeof window.cameraController.applyForPart === "function") {
+            window.cameraController.applyForPart(slotId);
+        }
+
         showView("product");
+    }
+
+    function openVariant(meshId, productName) {
+        const partSlot = productView.dataset.productSlot || "";
+        const partTitle = PART_TITLES[partSlot] || "Part";
+        const displayName = productName || meshId;
+
+        if (variantEyebrow) {
+            variantEyebrow.textContent = partTitle;
+        }
+        if (variantHeading) {
+            variantHeading.textContent = "Select Color";
+        }
+        if (variantLead) {
+            variantLead.textContent = "Choose a finish for your selected product.";
+        }
+        if (variantProductName) {
+            variantProductName.textContent = displayName;
+        }
+        if (variantProductNameMobile) {
+            variantProductNameMobile.textContent = displayName;
+        }
+
+        sheetCopy.variant.title = "Select Color";
+        sheetCopy.variant.subtitle = "Choose a finish for your selected product.";
+        sheetCopy.variant.backTarget = "product";
+        sheetCopy.variant.back = "Products";
+
+        if (window.catalogUI && typeof window.catalogUI.renderVariantList === "function") {
+            window.catalogUI.renderVariantList(meshId);
+        }
+
+        showView("variant");
     }
 
     function selectCaliber(caliberName) {
@@ -379,6 +442,11 @@
     navBackButtons.forEach(function (button) {
         button.addEventListener("click", function () {
             const target = button.dataset.back || "main";
+
+            if (currentView === "variant") {
+                showView("product");
+                return;
+            }
 
             if (currentView === "product") {
                 showView(productBackTarget);
@@ -521,4 +589,10 @@
     if (isMobileLayout()) {
         setSheetState(states.half);
     }
+
+    window.configuratorMenu = {
+        openProduct: openProduct,
+        openVariant: openVariant,
+        showView: showView
+    };
 })();
