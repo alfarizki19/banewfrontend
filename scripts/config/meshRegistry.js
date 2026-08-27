@@ -66,6 +66,24 @@
             variants: null,
             competitors: ["BCG001001"]
         },
+        BRL001001: {
+            section: "upperstripped",
+            part: "barrel",
+            material: "barrel",
+            partSlot: "barrel",
+            single: true,
+            variants: null,
+            competitors: ["BRL002001"]
+        },
+        BRL002001: {
+            section: "upperstripped",
+            part: "barrel",
+            material: "barrel",
+            partSlot: "barrel",
+            single: true,
+            variants: null,
+            competitors: ["BRL001001"]
+        },
         CGH001001: {
             section: "upperstripped",
             part: "charginghandle",
@@ -109,7 +127,16 @@
             partSlot: "trigger-guard",
             single: false,
             variants: ["black", "coyotebrown", "fde", "odgreen", "wolfgrey"],
-            competitors: []
+            competitors: ["TGG002001"]
+        },
+        TGG002001: {
+            section: "lowerstripped",
+            part: "triggerguard",
+            material: "trigger-guard",
+            partSlot: "trigger-guard",
+            single: false,
+            variants: ["black"],
+            competitors: ["TGG001001"]
         }
     };
 })();

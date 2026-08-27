@@ -5,7 +5,7 @@
     const IFRAME_ID = "sketchfab-iframe";
 
     function getModelUid() {
-        return window.SKETCHFAB_MODEL_UID || "5c67d3c24bf34eab81af0e48e7f08d6b";
+        return window.SKETCHFAB_MODEL_UID || "56e3db8243e946eea0eb0100ea5aa3e6";
     }
 
     function getEmbedOptions() {

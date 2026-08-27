@@ -3,7 +3,7 @@
 
     // Sync with workspace/sketchfab/camera-position/presets.json
     window.CAMERA_PRESETS = {
-        modelUid: "5c67d3c24bf34eab81af0e48e7f08d6b",
+        modelUid: "56e3db8243e946eea0eb0100ea5aa3e6",
         fovDefault: 45,
         transitionDuration: 0.5,
         parts: {
@@ -20,6 +20,11 @@
             "bolt-carrier-group": {
                 position: [-0.224, 0.067, 0.118],
                 target: [-0.006, -0.02, 0.032],
+                fov: 45
+            },
+            barrel: {
+                position: [-0.267, -0.754, 0.233],
+                target: [0.038, -0.224, -0.022],
                 fov: 45
             },
             "lower-receiver": {

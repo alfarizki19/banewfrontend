@@ -41,6 +41,20 @@
                 price: 0
             }
         ],
+        barrel: [
+            {
+                id: "BRL001001",
+                meshId: "BRL001001",
+                name: "Anderson AR-15 16\" 5.56 Barrel, Carbine Gas, 1:8, M4 Contour",
+                price: 0
+            },
+            {
+                id: "BRL002001",
+                meshId: "BRL002001",
+                name: "Ballistic Advantage AR-15 Modern Series 13.7\" 5.56 NATO Barrel, Government Contour, Mid Length",
+                price: 0
+            }
+        ],
         magazine: [
             {
                 id: "MAG001001",
@@ -94,6 +108,12 @@
                 id: "TGG001001",
                 meshId: "TGG001001",
                 name: "Enhanced Trigger Guard",
+                price: 0
+            },
+            {
+                id: "TGG002001",
+                meshId: "TGG002001",
+                name: "Bushmaster AR-15 Trigger Guard Assembly",
                 price: 0
             }
         ]
