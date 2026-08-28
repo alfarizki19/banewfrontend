@@ -3,7 +3,7 @@
 
     // Mesh-centric registry — no texture URLs. Commerce fields are placeholders.
     window.MESH_REGISTRY = {
-        STK001001: {
+        STK004001: {
             section: "lowerstripped",
             part: "stock",
             material: "stock",
@@ -12,7 +12,7 @@
             variants: ["black", "coyotebrown", "fde", "grey", "odgreen"],
             competitors: []
         },
-        TRG001001: {
+        TRG011001: {
             section: "lowerstripped",
             part: "trigger",
             material: "trigger",
@@ -21,7 +21,7 @@
             variants: ["black", "silver"],
             competitors: []
         },
-        SAF001001: {
+        SAF010001: {
             section: "lowerstripped",
             part: "safetyselector",
             material: "safety-selector",
@@ -30,7 +30,7 @@
             variants: ["black", "fde", "grey", "odgreen"],
             competitors: []
         },
-        PGP001001: {
+        PGP008001: {
             section: "lowerstripped",
             part: "pistolgrip",
             material: "pistol-grip",
@@ -39,7 +39,7 @@
             variants: ["black", "fde"],
             competitors: []
         },
-        MAG001001: {
+        MAG007001: {
             section: "lowerstripped",
             part: "magazine",
             material: "magazine",
@@ -48,16 +48,7 @@
             variants: ["black", "fde"],
             competitors: []
         },
-        BCG001001: {
-            section: "upperstripped",
-            part: "boltcarriergroup",
-            material: "bolt-carrier-group",
-            partSlot: "bolt-carrier-group",
-            single: true,
-            variants: null,
-            competitors: ["BCG002001"]
-        },
-        BCG002001: {
+        BCG009001: {
             section: "upperstripped",
             part: "boltcarriergroup",
             material: "bolt-carrier-group",
@@ -66,14 +57,14 @@
             variants: null,
             competitors: ["BCG001001"]
         },
-        BRL001001: {
+        BCG001001: {
             section: "upperstripped",
-            part: "barrel",
-            material: "barrel",
-            partSlot: "barrel",
+            part: "boltcarriergroup",
+            material: "bolt-carrier-group",
+            partSlot: "bolt-carrier-group",
             single: true,
             variants: null,
-            competitors: ["BRL002001"]
+            competitors: ["BCG009001"]
         },
         BRL002001: {
             section: "upperstripped",
@@ -82,9 +73,18 @@
             partSlot: "barrel",
             single: true,
             variants: null,
-            competitors: ["BRL001001"]
+            competitors: ["BRL003001"]
         },
-        CGH001001: {
+        BRL003001: {
+            section: "upperstripped",
+            part: "barrel",
+            material: "barrel",
+            partSlot: "barrel",
+            single: true,
+            variants: null,
+            competitors: ["BRL002001"]
+        },
+        CGH010001: {
             section: "upperstripped",
             part: "charginghandle",
             material: "charging-handle",
@@ -93,7 +93,7 @@
             variants: ["black", "fde", "silver"],
             competitors: []
         },
-        UPR001001: {
+        UPR006001: {
             section: "upperstripped",
             part: "upperreceiver",
             material: "upper-receiver",
@@ -102,7 +102,7 @@
             variants: ["black", "fde"],
             competitors: []
         },
-        LWR001001: {
+        LWR006001: {
             section: "lowerstripped",
             part: "lowerreceiver",
             material: "lower-receiver",
@@ -120,23 +120,39 @@
             variants: null,
             competitors: []
         },
-        TGG001001: {
+        TGG004001: {
             section: "lowerstripped",
             part: "triggerguard",
             material: "trigger-guard",
             partSlot: "trigger-guard",
             single: false,
             variants: ["black", "coyotebrown", "fde", "odgreen", "wolfgrey"],
-            competitors: ["TGG002001"]
+            competitors: ["TGG005001"]
         },
-        TGG002001: {
+        TGG005001: {
             section: "lowerstripped",
             part: "triggerguard",
             material: "trigger-guard",
             partSlot: "trigger-guard",
             single: false,
             variants: ["black"],
-            competitors: ["TGG001001"]
+            competitors: ["TGG004001"]
         }
     };
+
+    // Pre-migration node names not in MESH_REGISTRY (safe to hide; excludes IDs reused globally).
+    window.LEGACY_MESH_IDS = [
+        "UPR001001",
+        "LWR001001",
+        "BCG002001",
+        "CGH001001",
+        "BRL001001",
+        "TRG001001",
+        "PGP001001",
+        "STK001001",
+        "SAF001001",
+        "MAG001001",
+        "TGG001001",
+        "TGG002001"
+    ];
 })();

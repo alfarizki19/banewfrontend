@@ -8,9 +8,13 @@
         });
     }
 
+    function getLegacyMeshIds() {
+        return window.LEGACY_MESH_IDS || [];
+    }
+
     function hideAllRegisteredMeshes() {
         const meshIds = Object.keys(window.MESH_REGISTRY || {});
-        return applyVisibility([], meshIds);
+        return applyVisibility([], meshIds.concat(getLegacyMeshIds()));
     }
 
     function applyVisibility(showIds, hideIds) {
@@ -46,7 +50,8 @@
             return Promise.resolve(false);
         }
 
-        return applyVisibility([meshId], mesh.competitors || []);
+        const hideIds = (mesh.competitors || []).concat(getLegacyMeshIds());
+        return applyVisibility([meshId], hideIds);
     }
 
     window.modelController = {

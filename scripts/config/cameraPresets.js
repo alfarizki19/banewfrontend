@@ -3,7 +3,7 @@
 
     // Sync with workspace/sketchfab/camera-position/presets.json
     window.CAMERA_PRESETS = {
-        modelUid: "56e3db8243e946eea0eb0100ea5aa3e6",
+        modelUid: "b7f49c3b53924021ad64ce66bbbe384d",
         fovDefault: 45,
         transitionDuration: 0.5,
         parts: {
