@@ -99,11 +99,16 @@ button {
     background: radial-gradient(ellipse at center, transparent 40%, rgba(145, 152, 157, 0.2) 100%);
 }
 
-#brand {
+#brand.brand-logo,
+.brand-logo {
     position: absolute;
     top: 28px;
     left: 32px;
     z-index: 10;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    line-height: 1;
     pointer-events: none;
 }
 
@@ -111,13 +116,13 @@ button {
     margin: 0;
     font-size: 14px;
     line-height: 1;
-    font-weight: 700;
+    font-weight: 600;
     letter-spacing: 0.2em;
     text-transform: uppercase;
 }
 
 .brand-tagline {
-    margin: 5px 0 0;
+    margin: 0;
     color: var(--accent);
     font-size: 8.5px;
     line-height: 1;
@@ -194,10 +199,25 @@ button {
     z-index: 10;
     display: flex;
     flex-wrap: wrap;
-    align-items: baseline;
+    align-items: center;
     gap: 16px 20px;
     max-width: calc(100% - 64px);
     pointer-events: none;
+}
+
+.viewer-hint-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.viewer-hint-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 999px;
+    background: var(--accent);
+    opacity: 0.4;
+    flex-shrink: 0;
 }
 
 .viewer-hint {
@@ -353,13 +373,11 @@ button {
     background: linear-gradient(90deg, transparent, #bcc2c6 30%, #aeb5ba 50%, #bcc2c6 70%, transparent);
 }
 
-#caliber-nav {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 8px;
+#caliber-nav,
+#build-type-nav {
     flex: 1;
-    align-content: start;
-    padding: 0 16px 16px;
+    min-height: 0;
+    padding: 0 20px 16px;
     overflow-y: auto;
 }
 
@@ -385,10 +403,19 @@ button {
     margin-top: 0;
 }
 
+.part-nav .caliber-dashboard-list + .part-section-label,
+.part-group .caliber-dashboard-list + .part-section-label {
+    margin-top: 12px;
+}
+
 .menu-section {
     display: flex;
     flex-direction: column;
     gap: 8px;
+}
+
+#main-menu-nav {
+    gap: 16px;
 }
 
 .menu-section__label {
@@ -425,11 +452,17 @@ button {
     color: var(--text-pri);
 }
 
-.back-link__mark {
-    width: 8px;
-    height: 8px;
-    border-radius: 2px;
-    background: var(--divider);
+.back-link__chevron {
+    flex-shrink: 0;
+    color: #a0a7ac;
+    font-size: 9px;
+    line-height: 1;
+    transition: color 0.16s ease, transform 0.16s ease;
+}
+
+.back-link:hover .back-link__chevron {
+    color: #657079;
+    transform: translateX(-2px);
 }
 
 .screen-hidden {
@@ -509,7 +542,8 @@ button {
         border-right: 0;
     }
 
-    #brand {
+    #brand.brand-logo,
+    .brand-logo {
         top: 24px;
         left: 24px;
     }
@@ -520,7 +554,6 @@ button {
     }
 
     .brand-tagline {
-        margin-top: 4px;
         font-size: 8px;
         letter-spacing: 0.2em;
         opacity: 0.76;
@@ -671,40 +704,24 @@ button {
         text-align: center;
     }
 
-    #caliber-group {
-        display: grid;
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-        gap: 8px;
-        flex-shrink: 0;
+    #caliber-group,
+    #build-type-group {
+        flex: 1;
+        min-height: 0;
         width: 100%;
+        overflow-y: auto;
+        padding-bottom: 4px;
     }
 
     #main-menu-group {
         display: flex;
         flex-direction: column;
-        gap: 14px;
+        gap: 16px;
         flex: 1;
         min-height: 0;
         width: 100%;
         overflow-y: auto;
         padding-bottom: 8px;
-    }
-
-    #main-menu-group .menu-section__grid {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 8px;
-    }
-
-    #main-menu-group .menu-section--gear .menu-section__grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    #main-menu-group .calibre-card__text {
-        white-space: normal;
-        text-align: center;
-        line-height: 1.15;
-        padding: 0 4px;
     }
 
     .part-group {
@@ -727,6 +744,8 @@ button {
     }
 
     #sheet-summary {
+        position: relative;
+        z-index: 2;
         margin-top: auto;
         min-height: 67px;
         flex-shrink: 0;
@@ -768,10 +787,5 @@ button {
 
     #sheet-subtitle {
         display: none;
-    }
-
-    #caliber-group {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-        gap: 6px;
     }
 }

@@ -3,6 +3,7 @@
     const sheet = document.getElementById("bottom-sheet");
     const dragZone = document.getElementById("sheet-drag-zone");
     const caliberButtons = document.querySelectorAll("[data-caliber]");
+    const buildTypeButtons = document.querySelectorAll("[data-build-type]");
     const menuButtons = document.querySelectorAll("[data-menu]");
     const partButtons = document.querySelectorAll("[data-part]");
     const viewBuildButton = document.getElementById("view-build-btn");
@@ -19,12 +20,11 @@
     const variantEyebrow = document.getElementById("variant-eyebrow");
     const variantHeading = document.getElementById("variant-heading");
     const variantLead = document.getElementById("variant-lead");
-    const variantProductName = document.getElementById("variant-product-name");
-    const variantProductNameMobile = document.getElementById("variant-product-name-mobile");
     const navBackButtons = document.querySelectorAll(".js-nav-back");
 
     const panelViews = {
         caliber: document.getElementById("caliber-view"),
+        "build-type": document.getElementById("build-type-view"),
         main: document.getElementById("main-menu-view"),
         "part-upper": document.getElementById("part-upper-view"),
         "part-lower": document.getElementById("part-lower-view"),
@@ -34,6 +34,7 @@
 
     const sheetGroups = {
         caliber: document.getElementById("caliber-group"),
+        "build-type": document.getElementById("build-type-group"),
         main: document.getElementById("main-menu-group"),
         "part-upper": document.getElementById("part-upper-group"),
         "part-lower": document.getElementById("part-lower-group"),
@@ -42,6 +43,17 @@
     };
 
     const cartOverlay = document.getElementById("cart-overlay");
+    const buildSummary = document.getElementById("build-summary");
+    const sheetSummary = document.getElementById("sheet-summary");
+
+    const SUMMARY_HIDDEN_VIEWS = ["caliber", "build-type"];
+
+    const MENU_FAMILIES = {
+        "upper-complete": "upper",
+        "upper-striped": "upper",
+        "lower-complete": "lower",
+        "lower-striped": "lower"
+    };
 
     const PART_TITLES = {
         "upper-complete": "Upper complete",
@@ -78,7 +90,9 @@
     let currentState = states.half;
     let currentView = "caliber";
     let selectedCaliber = null;
-    let selectedMenu = null;
+    let selectedBuildType = null;
+    let selectedUpperMenu = null;
+    let selectedLowerMenu = null;
     let selectedPart = null;
     let productBackTarget = "main";
     let isCartOpen = false;
@@ -96,11 +110,18 @@
             backTarget: "caliber",
             showBack: false
         },
+        "build-type": {
+            title: "Select Build Type",
+            subtitle: "Choose how you want to configure your rifle.",
+            back: "Caliber",
+            backTarget: "caliber",
+            showBack: true
+        },
         main: {
             title: "Build Your AR",
             subtitle: "Select a section to customize your build.",
-            back: "Caliber",
-            backTarget: "caliber",
+            back: "Build Type",
+            backTarget: "build-type",
             showBack: true
         },
         "part-upper": {
@@ -248,17 +269,34 @@
         });
     }
 
+    function updateSummaryVisibility(viewId) {
+        const showSummary = SUMMARY_HIDDEN_VIEWS.indexOf(viewId) === -1;
+
+        if (buildSummary) {
+            buildSummary.classList.toggle("screen-hidden", !showSummary);
+        }
+
+        if (sheetSummary) {
+            sheetSummary.classList.toggle("screen-hidden", !showSummary);
+        }
+    }
+
     function showView(viewId) {
         currentView = viewId;
         hideAllViews();
         panelViews[viewId].classList.remove("screen-hidden");
         sheetGroups[viewId].classList.remove("screen-hidden");
+        updateSummaryVisibility(viewId);
+
+        if (viewId === "main") {
+            updateMainMenuSelection();
+        }
 
         const copy = sheetCopy[viewId];
         sheetTitle.textContent = copy.title;
         sheetSubtitle.textContent = copy.subtitle;
-        const mark = document.createElement("span");
-        mark.className = "back-link__mark";
+        const mark = document.createElement("i");
+        mark.className = "fa-solid fa-chevron-left back-link__chevron";
         mark.setAttribute("aria-hidden", "true");
         sheetBack.textContent = copy.back;
         sheetBack.prepend(mark);
@@ -266,7 +304,8 @@
         sheetBack.classList.toggle("screen-hidden", !copy.showBack);
 
         if (isMobileLayout()) {
-            setSheetState(viewId === "caliber" ? states.half : states.full);
+            const useHalfSheet = viewId === "caliber" || viewId === "build-type";
+            setSheetState(useHalfSheet ? states.half : states.full);
         }
     }
 
@@ -280,7 +319,7 @@
     }
 
     function openCart() {
-        if (!selectedCaliber || !cartOverlay) {
+        if (!cartOverlay) {
             return;
         }
 
@@ -288,6 +327,7 @@
         isCartOpen = true;
         cartOverlay.classList.add("is-open");
         cartOverlay.setAttribute("aria-hidden", "false");
+        document.body.classList.add("cart-open");
     }
 
     function closeCart() {
@@ -298,6 +338,7 @@
         isCartOpen = false;
         cartOverlay.classList.remove("is-open");
         cartOverlay.setAttribute("aria-hidden", "true");
+        document.body.classList.remove("cart-open");
     }
 
     function openProduct(slotId, backTarget) {
@@ -333,7 +374,6 @@
     function openVariant(meshId, productName) {
         const partSlot = productView.dataset.productSlot || "";
         const partTitle = PART_TITLES[partSlot] || "Part";
-        const displayName = productName || meshId;
 
         if (variantEyebrow) {
             variantEyebrow.textContent = partTitle;
@@ -343,12 +383,6 @@
         }
         if (variantLead) {
             variantLead.textContent = "Choose a finish for your selected product.";
-        }
-        if (variantProductName) {
-            variantProductName.textContent = displayName;
-        }
-        if (variantProductNameMobile) {
-            variantProductNameMobile.textContent = displayName;
         }
 
         sheetCopy.variant.title = "Select Color";
@@ -371,7 +405,41 @@
             button.classList.toggle("is-selected", isSelected);
         });
 
+        showView("build-type");
+    }
+
+    function selectBuildType(buildType) {
+        selectedBuildType = buildType;
+
+        buildTypeButtons.forEach(function (button) {
+            const isSelected = button.getAttribute("data-build-type") === buildType;
+            button.classList.toggle("is-selected", isSelected);
+        });
+
         showView("main");
+    }
+
+    function getMenuFamily(menuId) {
+        return MENU_FAMILIES[menuId] || null;
+    }
+
+    function updateMainMenuSelection() {
+        menuButtons.forEach(function (button) {
+            const menuId = button.getAttribute("data-menu");
+            const family = getMenuFamily(menuId);
+
+            if (family === "upper") {
+                button.classList.toggle("is-selected", menuId === selectedUpperMenu);
+                return;
+            }
+
+            if (family === "lower") {
+                button.classList.toggle("is-selected", menuId === selectedLowerMenu);
+                return;
+            }
+
+            button.classList.remove("is-selected");
+        });
     }
 
     function selectMenu(menuId) {
@@ -379,12 +447,15 @@
             return;
         }
 
-        selectedMenu = menuId;
+        const family = getMenuFamily(menuId);
 
-        menuButtons.forEach(function (button) {
-            const isSelected = button.getAttribute("data-menu") === menuId;
-            button.classList.toggle("is-selected", isSelected);
-        });
+        if (family === "upper") {
+            selectedUpperMenu = menuId;
+        } else if (family === "lower") {
+            selectedLowerMenu = menuId;
+        }
+
+        updateMainMenuSelection();
 
         if (menuId === "upper-complete") {
             openProduct("upper-complete", "main");
@@ -424,6 +495,12 @@
         });
     });
 
+    buildTypeButtons.forEach(function (button) {
+        button.addEventListener("click", function () {
+            selectBuildType(button.getAttribute("data-build-type"));
+        });
+    });
+
     menuButtons.forEach(function (button) {
         button.addEventListener("click", function () {
             selectMenu(button.getAttribute("data-menu"));
@@ -457,7 +534,12 @@
         });
     });
 
-    function onViewBuild() {
+    function onViewBuild(event) {
+        if (event) {
+            event.preventDefault();
+            event.stopPropagation();
+        }
+
         openCart();
     }
 
@@ -590,9 +672,20 @@
         setSheetState(states.half);
     }
 
+    updateSummaryVisibility(currentView);
+
     window.configuratorMenu = {
         openProduct: openProduct,
         openVariant: openVariant,
-        showView: showView
+        showView: showView,
+        getSelectedBuildType: function () {
+            return selectedBuildType;
+        },
+        getSelectedUpperMenu: function () {
+            return selectedUpperMenu;
+        },
+        getSelectedLowerMenu: function () {
+            return selectedLowerMenu;
+        }
     };
 })();

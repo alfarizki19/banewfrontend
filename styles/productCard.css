@@ -81,9 +81,33 @@
     width: 20px;
     height: 20px;
     z-index: 5;
-    border-radius: 999px;
+    padding: 0;
     border: 1px solid rgba(188, 194, 198, 0.9);
+    border-radius: 999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background: rgba(255, 255, 255, 0.88);
+    color: #657079;
+    font-family: inherit;
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1;
+    cursor: pointer;
+    transition:
+        background 0.15s ease,
+        color 0.15s ease,
+        transform 0.12s ease;
+}
+
+.product-card__info:hover {
+    background: #23282c;
+    color: #fff;
+    transform: scale(1.06);
+}
+
+.product-card__info:active {
+    transform: scale(0.94);
 }
 
 .product-card__title {

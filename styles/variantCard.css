@@ -1,12 +1,20 @@
 #variant-list,
 #variant-group {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 8px;
     flex: 1;
     align-content: start;
-    padding: 0 16px 16px;
     overflow-y: auto;
+}
+
+#variant-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    padding: 0 16px 16px;
+}
+
+#variant-group {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    padding: 1px 0 10px;
 }
 
 .catalog-empty {
@@ -17,32 +25,6 @@
     font-size: 12px;
     line-height: 1.4;
     text-align: center;
-}
-
-.variant-context {
-    margin: 0 16px 12px;
-    padding: 8px 10px;
-    border: 1px solid var(--divider-2);
-    border-radius: 9px;
-    background: linear-gradient(135deg, #eef0f2 0%, #e4e7e9 100%);
-}
-
-.variant-context__label {
-    margin: 0 0 3px;
-    color: var(--text-sec);
-    font-size: 8px;
-    line-height: 1;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-}
-
-.variant-context__product {
-    margin: 0;
-    color: var(--text-pri);
-    font-size: 11px;
-    line-height: 1.25;
-    font-weight: 600;
 }
 
 .swatch-card {
@@ -140,12 +122,7 @@
     }
 
     #variant-group {
-        padding: 1px 0 10px;
         gap: 8px;
-    }
-
-    .variant-context {
-        margin: 0 0 11px;
     }
 
     .swatch-card {

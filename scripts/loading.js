@@ -9,7 +9,7 @@
         return;
     }
 
-    let isFull = false;
+    let isComplete = false;
 
     function hideOverlay() {
         overlay.classList.add("is-hidden");
@@ -17,11 +17,11 @@
     }
 
     function fillThenHold() {
-        if (isFull) {
+        if (isComplete) {
             return;
         }
 
-        isFull = true;
+        isComplete = true;
         bar.classList.remove("is-mid");
         bar.classList.add("is-full");
         window.setTimeout(hideOverlay, FILL_MS + HOLD_AFTER_FULL_MS);
@@ -32,7 +32,7 @@
     });
 
     window.setTimeout(function () {
-        if (!isFull) {
+        if (!isComplete) {
             bar.classList.add("is-mid");
         }
     }, MID_DELAY_MS);

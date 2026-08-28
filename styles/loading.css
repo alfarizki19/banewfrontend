@@ -1,13 +1,13 @@
 #loading-overlay {
-    position: absolute;
+    position: fixed;
     inset: 0;
-    z-index: 1000;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(26, 30, 33, 0.2);
-    -webkit-backdrop-filter: blur(3px);
-    backdrop-filter: blur(3px);
+    background: #e9ebec;
     pointer-events: auto;
     user-select: none;
     opacity: 1;
@@ -27,15 +27,16 @@
 }
 
 #loading-popup {
-    width: 260px;
-    padding: 34px 32px 30px;
+    width: 280px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: 1px solid #d3d8db;
-    border-radius: 16px;
-    background: #f7f7f5;
-    box-shadow: 0 12px 40px rgba(35, 40, 44, 0.16);
+    justify-content: center;
+    padding: 0;
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
 }
 
 .loading-brand {
@@ -43,10 +44,9 @@
     color: #1a1e21;
     font-size: 15px;
     line-height: 1;
-    font-weight: 700;
+    font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.18em;
-    text-align: center;
+    letter-spacing: 0.2em;
 }
 
 .loading-tagline {
@@ -58,14 +58,13 @@
     text-transform: uppercase;
     letter-spacing: 0.22em;
     opacity: 0.78;
-    text-align: center;
 }
 
 .loading-bar {
     position: relative;
-    width: 158px;
+    width: 170px;
     height: 3px;
-    margin-top: 27px;
+    margin-top: 18px;
     overflow: hidden;
     border-radius: 999px;
     background: #d3d8db;
@@ -79,7 +78,7 @@
     height: 100%;
     border-radius: inherit;
     background: #657079;
-    transform: scaleX(0.14);
+    transform: scaleX(0.08);
     transform-origin: left center;
     transition: transform 0.7s cubic-bezier(0.45, 0, 0.2, 1);
 }

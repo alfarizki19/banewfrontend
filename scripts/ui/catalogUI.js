@@ -27,7 +27,9 @@
         article.innerHTML =
             '<div class="product-card__thumb">' +
             '<span class="product-card__badge" aria-hidden="true"></span>' +
-            '<span class="product-card__info" aria-hidden="true"></span>' +
+            '<button class="product-card__info" type="button" aria-label="View ' +
+            product.name +
+            ' product detail">!</button>' +
             "</div>" +
             '<p class="product-card__title"></p>' +
             '<p class="product-card__price">$' +
@@ -247,6 +249,11 @@
 
     function bindHandlers() {
         document.addEventListener("click", function (event) {
+            if (event.target.closest(".product-card__info")) {
+                event.stopPropagation();
+                return;
+            }
+
             const swatchCard = event.target.closest(".swatch-card[data-variant][data-mesh-id]");
             if (swatchCard) {
                 handleVariantClick(swatchCard);
@@ -261,6 +268,10 @@
 
         document.addEventListener("keydown", function (event) {
             if (event.key !== "Enter" && event.key !== " ") {
+                return;
+            }
+
+            if (event.target.closest(".product-card__info")) {
                 return;
             }
 

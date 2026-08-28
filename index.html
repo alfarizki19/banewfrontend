@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Boss Arms — Configurator</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
     <link rel="stylesheet" href="./styles/main.css">
     <link rel="stylesheet" href="./styles/calibreCard.css">
     <link rel="stylesheet" href="./styles/menuCard.css">
@@ -40,7 +41,7 @@
 
             <div class="viewer-vignette"></div>
 
-            <div id="brand">
+            <div id="brand" class="brand-logo">
                 <p class="brand-name">BOSS ARMS</p>
                 <p class="brand-tagline">Precision Configured</p>
             </div>
@@ -58,7 +59,10 @@
             </div>
 
             <div class="viewer-hint-row">
-                <p class="viewer-hint">AR Platform · Custom Build</p>
+                <div class="viewer-hint-group">
+                    <span class="viewer-hint-dot" aria-hidden="true"></span>
+                    <p class="viewer-hint">AR Platform · Custom Build</p>
+                </div>
                 <div id="camera-debug-wrap" class="viewer-debug-wrap" hidden>
                     <p id="camera-debug" class="viewer-hint viewer-hint--debug" aria-live="polite"></p>
                     <button type="button" id="camera-debug-copy" class="viewer-debug-copy" aria-label="Copy camera coordinates">
@@ -82,30 +86,79 @@
                     </header>
 
                     <nav id="caliber-nav" aria-label="Caliber options">
-                        <button class="calibre-card" type="button" data-caliber="5.56 NATO" id="caliber-556" aria-label="5.56 NATO">
-                            <span class="calibre-card__image" aria-hidden="true"></span>
-                            <span class="calibre-card__text">5.56</span>
+                        <div class="caliber-dashboard-list">
+                            <button class="caliber-dashboard-button" type="button" data-caliber="5.56 NATO" id="caliber-556" aria-label="5.56 NATO">
+                                <div class="caliber-dashboard-copy">
+                                    <p class="caliber-dashboard-title">5.56 NATO</p>
+                                    <p class="caliber-dashboard-description">Versatile, high-velocity round</p>
+                                </div>
+                                <i class="fa-solid fa-chevron-right caliber-dashboard-chevron" aria-hidden="true"></i>
+                            </button>
+                            <button class="caliber-dashboard-button" type="button" data-caliber=".223 Remington" id="caliber-223" aria-label=".223 Remington">
+                                <div class="caliber-dashboard-copy">
+                                    <p class="caliber-dashboard-title">.223 Remington</p>
+                                    <p class="caliber-dashboard-description">Precision &amp; accuracy focused</p>
+                                </div>
+                                <i class="fa-solid fa-chevron-right caliber-dashboard-chevron" aria-hidden="true"></i>
+                            </button>
+                            <button class="caliber-dashboard-button" type="button" data-caliber=".300 BLK" id="caliber-300blk" aria-label=".300 BLK">
+                                <div class="caliber-dashboard-copy">
+                                    <p class="caliber-dashboard-title">.300 BLK</p>
+                                    <p class="caliber-dashboard-description">Subsonic &amp; suppressed builds</p>
+                                </div>
+                                <i class="fa-solid fa-chevron-right caliber-dashboard-chevron" aria-hidden="true"></i>
+                            </button>
+                            <button class="caliber-dashboard-button" type="button" data-caliber="9mm Luger" id="caliber-9mm" aria-label="9mm Luger">
+                                <div class="caliber-dashboard-copy">
+                                    <p class="caliber-dashboard-title">9mm Luger</p>
+                                    <p class="caliber-dashboard-description">Compact pistol-caliber build</p>
+                                </div>
+                                <i class="fa-solid fa-chevron-right caliber-dashboard-chevron" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                    </nav>
+                </div>
+
+                <div id="build-type-view" class="screen-hidden">
+                    <header class="panel-header">
+                        <button class="back-link js-nav-back" type="button" data-back="caliber">
+                            <i class="fa-solid fa-chevron-left back-link__chevron" aria-hidden="true"></i>
+                            Caliber
                         </button>
-                        <button class="calibre-card" type="button" data-caliber=".223 Remington" id="caliber-223" aria-label=".223 Remington">
-                            <span class="calibre-card__image" aria-hidden="true"></span>
-                            <span class="calibre-card__text">.223</span>
-                        </button>
-                        <button class="calibre-card" type="button" data-caliber=".300 BLK" id="caliber-300blk" aria-label=".300 BLK">
-                            <span class="calibre-card__image" aria-hidden="true"></span>
-                            <span class="calibre-card__text">.300</span>
-                        </button>
-                        <button class="calibre-card" type="button" data-caliber="9mm Luger" id="caliber-9mm" aria-label="9mm Luger">
-                            <span class="calibre-card__image" aria-hidden="true"></span>
-                            <span class="calibre-card__text">9mm</span>
-                        </button>
+                        <div class="eyebrow">
+                            <span class="eyebrow-mark"></span>
+                            <p>Configuration Studio</p>
+                        </div>
+                        <h1>Select Build Type</h1>
+                        <p class="panel-lead">Choose how you want to configure your rifle.</p>
+                        <div class="metallic-divider"></div>
+                    </header>
+
+                    <nav id="build-type-nav" aria-label="Build type options">
+                        <div class="caliber-dashboard-list">
+                            <button class="caliber-dashboard-button" type="button" data-build-type="partial-build" aria-label="Custom Build">
+                                <div class="caliber-dashboard-copy">
+                                    <p class="caliber-dashboard-title">Custom Build</p>
+                                    <p class="caliber-dashboard-description">Select only the parts you need</p>
+                                </div>
+                                <i class="fa-solid fa-chevron-right caliber-dashboard-chevron" aria-hidden="true"></i>
+                            </button>
+                            <button class="caliber-dashboard-button" type="button" data-build-type="full-build" aria-label="Complete Build">
+                                <div class="caliber-dashboard-copy">
+                                    <p class="caliber-dashboard-title">Complete Build</p>
+                                    <p class="caliber-dashboard-description">Start with a complete rifle and customize it</p>
+                                </div>
+                                <i class="fa-solid fa-chevron-right caliber-dashboard-chevron" aria-hidden="true"></i>
+                            </button>
+                        </div>
                     </nav>
                 </div>
 
                 <div id="main-menu-view" class="screen-hidden">
                     <header class="panel-header">
-                        <button class="back-link js-nav-back" type="button" data-back="caliber">
-                            <span class="back-link__mark" aria-hidden="true"></span>
-                            Caliber
+                        <button class="back-link js-nav-back" type="button" data-back="build-type">
+                            <i class="fa-solid fa-chevron-left back-link__chevron" aria-hidden="true"></i>
+                            Build Type
                         </button>
                         <div class="eyebrow">
                             <span class="eyebrow-mark"></span>
@@ -119,68 +172,53 @@
                     <nav id="main-menu-nav" aria-label="Build sections">
                         <section class="menu-section">
                             <h2 class="menu-section__label">Upper</h2>
-                            <div class="menu-section__list">
-                                <button class="menu-card" type="button" data-menu="upper-complete">
-                                    <span class="menu-card__body">
-                                        <span class="icon-placeholder menu-card__icon" aria-hidden="true"></span>
-                                        <span class="menu-card__copy">
-                                            <span class="menu-card__title">Upper complete</span>
-                                            <span class="menu-card__meta">Fully assembled upper</span>
-                                        </span>
-                                    </span>
-                                    <span class="icon-placeholder menu-card__chevron" aria-hidden="true"></span>
+                            <div class="caliber-dashboard-list">
+                                <button class="caliber-dashboard-button" type="button" data-menu="upper-complete" aria-label="Upper complete">
+                                    <div class="caliber-dashboard-copy">
+                                        <p class="caliber-dashboard-title">Upper complete</p>
+                                        <p class="caliber-dashboard-description">Fully assembled upper</p>
+                                    </div>
+                                    <i class="fa-solid fa-chevron-right caliber-dashboard-chevron" aria-hidden="true"></i>
                                 </button>
-                                <button class="menu-card" type="button" data-menu="upper-striped">
-                                    <span class="menu-card__body">
-                                        <span class="icon-placeholder menu-card__icon" aria-hidden="true"></span>
-                                        <span class="menu-card__copy">
-                                            <span class="menu-card__title">Upper striped</span>
-                                            <span class="menu-card__meta">Stripped upper receiver</span>
-                                        </span>
-                                    </span>
-                                    <span class="icon-placeholder menu-card__chevron" aria-hidden="true"></span>
+                                <button class="caliber-dashboard-button" type="button" data-menu="upper-striped" aria-label="Upper striped">
+                                    <div class="caliber-dashboard-copy">
+                                        <p class="caliber-dashboard-title">Upper striped</p>
+                                        <p class="caliber-dashboard-description">Stripped upper receiver</p>
+                                    </div>
+                                    <i class="fa-solid fa-chevron-right caliber-dashboard-chevron" aria-hidden="true"></i>
                                 </button>
                             </div>
                         </section>
 
                         <section class="menu-section">
                             <h2 class="menu-section__label">Lower</h2>
-                            <div class="menu-section__list">
-                                <button class="menu-card" type="button" data-menu="lower-complete">
-                                    <span class="menu-card__body">
-                                        <span class="icon-placeholder menu-card__icon" aria-hidden="true"></span>
-                                        <span class="menu-card__copy">
-                                            <span class="menu-card__title">Lower complete</span>
-                                            <span class="menu-card__meta">Fully assembled lower</span>
-                                        </span>
-                                    </span>
-                                    <span class="icon-placeholder menu-card__chevron" aria-hidden="true"></span>
+                            <div class="caliber-dashboard-list">
+                                <button class="caliber-dashboard-button" type="button" data-menu="lower-complete" aria-label="Lower complete">
+                                    <div class="caliber-dashboard-copy">
+                                        <p class="caliber-dashboard-title">Lower complete</p>
+                                        <p class="caliber-dashboard-description">Fully assembled lower</p>
+                                    </div>
+                                    <i class="fa-solid fa-chevron-right caliber-dashboard-chevron" aria-hidden="true"></i>
                                 </button>
-                                <button class="menu-card" type="button" data-menu="lower-striped">
-                                    <span class="menu-card__body">
-                                        <span class="icon-placeholder menu-card__icon" aria-hidden="true"></span>
-                                        <span class="menu-card__copy">
-                                            <span class="menu-card__title">Lower striped</span>
-                                            <span class="menu-card__meta">Stripped lower receiver</span>
-                                        </span>
-                                    </span>
-                                    <span class="icon-placeholder menu-card__chevron" aria-hidden="true"></span>
+                                <button class="caliber-dashboard-button" type="button" data-menu="lower-striped" aria-label="Lower striped">
+                                    <div class="caliber-dashboard-copy">
+                                        <p class="caliber-dashboard-title">Lower striped</p>
+                                        <p class="caliber-dashboard-description">Stripped lower receiver</p>
+                                    </div>
+                                    <i class="fa-solid fa-chevron-right caliber-dashboard-chevron" aria-hidden="true"></i>
                                 </button>
                             </div>
                         </section>
 
                         <section class="menu-section">
                             <h2 class="menu-section__label">Gear</h2>
-                            <div class="menu-section__list">
-                                <button class="menu-card" type="button" data-menu="gear">
-                                    <span class="menu-card__body">
-                                        <span class="icon-placeholder menu-card__icon" aria-hidden="true"></span>
-                                        <span class="menu-card__copy">
-                                            <span class="menu-card__title">Gear</span>
-                                            <span class="menu-card__meta">Optics, Lights, Accessories</span>
-                                        </span>
-                                    </span>
-                                    <span class="icon-placeholder menu-card__chevron" aria-hidden="true"></span>
+                            <div class="caliber-dashboard-list">
+                                <button class="caliber-dashboard-button" type="button" data-menu="gear" aria-label="Gear">
+                                    <div class="caliber-dashboard-copy">
+                                        <p class="caliber-dashboard-title">Gear</p>
+                                        <p class="caliber-dashboard-description">Optics, Lights, Accessories</p>
+                                    </div>
+                                    <i class="fa-solid fa-chevron-right caliber-dashboard-chevron" aria-hidden="true"></i>
                                 </button>
                             </div>
                         </section>
@@ -190,7 +228,7 @@
                 <div id="part-upper-view" class="screen-hidden">
                     <header class="panel-header">
                         <button class="back-link js-nav-back" type="button" data-back="main">
-                            <span class="back-link__mark" aria-hidden="true"></span>
+                            <i class="fa-solid fa-chevron-left back-link__chevron" aria-hidden="true"></i>
                             Main menu
                         </button>
                         <div class="eyebrow">
@@ -203,50 +241,50 @@
                     </header>
                     <nav id="part-upper-nav" class="part-nav" aria-label="Stripped upper parts">
                         <p class="part-section-label">Required</p>
-                        <div class="menu-section__list">
-                        <button class="menu-card" type="button" data-part="upper-receiver" data-part-family="upper">
-                            <span class="menu-card__body"><span class="icon-placeholder menu-card__icon" aria-hidden="true"></span><span class="menu-card__copy"><span class="menu-card__title">Upper Receiver</span></span></span>
-                            <span class="icon-placeholder menu-card__chevron" aria-hidden="true"></span>
-                        </button>
-                        <button class="menu-card" type="button" data-part="barrel" data-part-family="upper">
-                            <span class="menu-card__body"><span class="icon-placeholder menu-card__icon" aria-hidden="true"></span><span class="menu-card__copy"><span class="menu-card__title">Barrel</span></span></span>
-                            <span class="icon-placeholder menu-card__chevron" aria-hidden="true"></span>
-                        </button>
-                        <button class="menu-card" type="button" data-part="handguard" data-part-family="upper">
-                            <span class="menu-card__body"><span class="icon-placeholder menu-card__icon" aria-hidden="true"></span><span class="menu-card__copy"><span class="menu-card__title">Handguard</span></span></span>
-                            <span class="icon-placeholder menu-card__chevron" aria-hidden="true"></span>
-                        </button>
-                        <button class="menu-card" type="button" data-part="gas-block" data-part-family="upper">
-                            <span class="menu-card__body"><span class="icon-placeholder menu-card__icon" aria-hidden="true"></span><span class="menu-card__copy"><span class="menu-card__title">Gas Block</span></span></span>
-                            <span class="icon-placeholder menu-card__chevron" aria-hidden="true"></span>
-                        </button>
-                        <button class="menu-card" type="button" data-part="gas-tube" data-part-family="upper">
-                            <span class="menu-card__body"><span class="icon-placeholder menu-card__icon" aria-hidden="true"></span><span class="menu-card__copy"><span class="menu-card__title">Gas Tube</span></span></span>
-                            <span class="icon-placeholder menu-card__chevron" aria-hidden="true"></span>
-                        </button>
-                        <button class="menu-card" type="button" data-part="muzzle-device" data-part-family="upper">
-                            <span class="menu-card__body"><span class="icon-placeholder menu-card__icon" aria-hidden="true"></span><span class="menu-card__copy"><span class="menu-card__title">Muzzle Device</span></span></span>
-                            <span class="icon-placeholder menu-card__chevron" aria-hidden="true"></span>
-                        </button>
-                        <button class="menu-card" type="button" data-part="bolt-carrier-group" data-part-family="upper">
-                            <span class="menu-card__body"><span class="icon-placeholder menu-card__icon" aria-hidden="true"></span><span class="menu-card__copy"><span class="menu-card__title">Bolt Carrier Group</span></span></span>
-                            <span class="icon-placeholder menu-card__chevron" aria-hidden="true"></span>
-                        </button>
-                        <button class="menu-card" type="button" data-part="charging-handle" data-part-family="upper">
-                            <span class="menu-card__body"><span class="icon-placeholder menu-card__icon" aria-hidden="true"></span><span class="menu-card__copy"><span class="menu-card__title">Charging Handle</span></span></span>
-                            <span class="icon-placeholder menu-card__chevron" aria-hidden="true"></span>
-                        </button>
-                        <button class="menu-card" type="button" data-part="forward-assist" data-part-family="upper">
-                            <span class="menu-card__body"><span class="icon-placeholder menu-card__icon" aria-hidden="true"></span><span class="menu-card__copy"><span class="menu-card__title">Forward Assist</span></span></span>
-                            <span class="icon-placeholder menu-card__chevron" aria-hidden="true"></span>
-                        </button>
+                        <div class="caliber-dashboard-list">
+                            <button class="caliber-dashboard-button" type="button" data-part="upper-receiver" data-part-family="upper" aria-label="Upper Receiver">
+                                <div class="caliber-dashboard-copy"><p class="caliber-dashboard-title">Upper Receiver</p></div>
+                                <i class="fa-solid fa-chevron-right caliber-dashboard-chevron" aria-hidden="true"></i>
+                            </button>
+                            <button class="caliber-dashboard-button" type="button" data-part="barrel" data-part-family="upper" aria-label="Barrel">
+                                <div class="caliber-dashboard-copy"><p class="caliber-dashboard-title">Barrel</p></div>
+                                <i class="fa-solid fa-chevron-right caliber-dashboard-chevron" aria-hidden="true"></i>
+                            </button>
+                            <button class="caliber-dashboard-button" type="button" data-part="handguard" data-part-family="upper" aria-label="Handguard">
+                                <div class="caliber-dashboard-copy"><p class="caliber-dashboard-title">Handguard</p></div>
+                                <i class="fa-solid fa-chevron-right caliber-dashboard-chevron" aria-hidden="true"></i>
+                            </button>
+                            <button class="caliber-dashboard-button" type="button" data-part="gas-block" data-part-family="upper" aria-label="Gas Block">
+                                <div class="caliber-dashboard-copy"><p class="caliber-dashboard-title">Gas Block</p></div>
+                                <i class="fa-solid fa-chevron-right caliber-dashboard-chevron" aria-hidden="true"></i>
+                            </button>
+                            <button class="caliber-dashboard-button" type="button" data-part="gas-tube" data-part-family="upper" aria-label="Gas Tube">
+                                <div class="caliber-dashboard-copy"><p class="caliber-dashboard-title">Gas Tube</p></div>
+                                <i class="fa-solid fa-chevron-right caliber-dashboard-chevron" aria-hidden="true"></i>
+                            </button>
+                            <button class="caliber-dashboard-button" type="button" data-part="muzzle-device" data-part-family="upper" aria-label="Muzzle Device">
+                                <div class="caliber-dashboard-copy"><p class="caliber-dashboard-title">Muzzle Device</p></div>
+                                <i class="fa-solid fa-chevron-right caliber-dashboard-chevron" aria-hidden="true"></i>
+                            </button>
+                            <button class="caliber-dashboard-button" type="button" data-part="bolt-carrier-group" data-part-family="upper" aria-label="Bolt Carrier Group">
+                                <div class="caliber-dashboard-copy"><p class="caliber-dashboard-title">Bolt Carrier Group</p></div>
+                                <i class="fa-solid fa-chevron-right caliber-dashboard-chevron" aria-hidden="true"></i>
+                            </button>
+                            <button class="caliber-dashboard-button" type="button" data-part="charging-handle" data-part-family="upper" aria-label="Charging Handle">
+                                <div class="caliber-dashboard-copy"><p class="caliber-dashboard-title">Charging Handle</p></div>
+                                <i class="fa-solid fa-chevron-right caliber-dashboard-chevron" aria-hidden="true"></i>
+                            </button>
+                            <button class="caliber-dashboard-button" type="button" data-part="forward-assist" data-part-family="upper" aria-label="Forward Assist">
+                                <div class="caliber-dashboard-copy"><p class="caliber-dashboard-title">Forward Assist</p></div>
+                                <i class="fa-solid fa-chevron-right caliber-dashboard-chevron" aria-hidden="true"></i>
+                            </button>
                         </div>
                         <p class="part-section-label">Optional</p>
-                        <div class="menu-section__list">
-                        <button class="menu-card" type="button" data-part="ejection-port-cover" data-part-family="upper">
-                            <span class="menu-card__body"><span class="icon-placeholder menu-card__icon" aria-hidden="true"></span><span class="menu-card__copy"><span class="menu-card__title">Ejection Port Cover</span></span></span>
-                            <span class="icon-placeholder menu-card__chevron" aria-hidden="true"></span>
-                        </button>
+                        <div class="caliber-dashboard-list">
+                            <button class="caliber-dashboard-button" type="button" data-part="ejection-port-cover" data-part-family="upper" aria-label="Ejection Port Cover">
+                                <div class="caliber-dashboard-copy"><p class="caliber-dashboard-title">Ejection Port Cover</p></div>
+                                <i class="fa-solid fa-chevron-right caliber-dashboard-chevron" aria-hidden="true"></i>
+                            </button>
                         </div>
                     </nav>
                 </div>
@@ -254,7 +292,7 @@
                 <div id="part-lower-view" class="screen-hidden">
                     <header class="panel-header">
                         <button class="back-link js-nav-back" type="button" data-back="main">
-                            <span class="back-link__mark" aria-hidden="true"></span>
+                            <i class="fa-solid fa-chevron-left back-link__chevron" aria-hidden="true"></i>
                             Main menu
                         </button>
                         <div class="eyebrow">
@@ -266,57 +304,59 @@
                         <div class="metallic-divider"></div>
                     </header>
                     <nav id="part-lower-nav" class="part-nav" aria-label="Stripped lower parts">
-                        <button class="menu-card" type="button" data-part="lower-receiver" data-part-family="lower">
-                            <span class="menu-card__body"><span class="icon-placeholder menu-card__icon" aria-hidden="true"></span><span class="menu-card__copy"><span class="menu-card__title">Lower Receiver</span></span></span>
-                            <span class="icon-placeholder menu-card__chevron" aria-hidden="true"></span>
-                        </button>
-                        <button class="menu-card" type="button" data-part="trigger" data-part-family="lower">
-                            <span class="menu-card__body"><span class="icon-placeholder menu-card__icon" aria-hidden="true"></span><span class="menu-card__copy"><span class="menu-card__title">Trigger</span></span></span>
-                            <span class="icon-placeholder menu-card__chevron" aria-hidden="true"></span>
-                        </button>
-                        <button class="menu-card" type="button" data-part="pistol-grip" data-part-family="lower">
-                            <span class="menu-card__body"><span class="icon-placeholder menu-card__icon" aria-hidden="true"></span><span class="menu-card__copy"><span class="menu-card__title">Pistol Grip</span></span></span>
-                            <span class="icon-placeholder menu-card__chevron" aria-hidden="true"></span>
-                        </button>
-                        <button class="menu-card" type="button" data-part="stock" data-part-family="lower">
-                            <span class="menu-card__body"><span class="icon-placeholder menu-card__icon" aria-hidden="true"></span><span class="menu-card__copy"><span class="menu-card__title">Stock</span></span></span>
-                            <span class="icon-placeholder menu-card__chevron" aria-hidden="true"></span>
-                        </button>
-                        <button class="menu-card" type="button" data-part="buffer-system" data-part-family="lower">
-                            <span class="menu-card__body"><span class="icon-placeholder menu-card__icon" aria-hidden="true"></span><span class="menu-card__copy"><span class="menu-card__title">Buffer System</span></span></span>
-                            <span class="icon-placeholder menu-card__chevron" aria-hidden="true"></span>
-                        </button>
-                        <button class="menu-card" type="button" data-part="safety-selector" data-part-family="lower">
-                            <span class="menu-card__body"><span class="icon-placeholder menu-card__icon" aria-hidden="true"></span><span class="menu-card__copy"><span class="menu-card__title">Safety Selector</span></span></span>
-                            <span class="icon-placeholder menu-card__chevron" aria-hidden="true"></span>
-                        </button>
-                        <button class="menu-card" type="button" data-part="magazine" data-part-family="lower">
-                            <span class="menu-card__body"><span class="icon-placeholder menu-card__icon" aria-hidden="true"></span><span class="menu-card__copy"><span class="menu-card__title">Magazine</span></span></span>
-                            <span class="icon-placeholder menu-card__chevron" aria-hidden="true"></span>
-                        </button>
-                        <button class="menu-card" type="button" data-part="magazine-release" data-part-family="lower">
-                            <span class="menu-card__body"><span class="icon-placeholder menu-card__icon" aria-hidden="true"></span><span class="menu-card__copy"><span class="menu-card__title">Magazine Release</span></span></span>
-                            <span class="icon-placeholder menu-card__chevron" aria-hidden="true"></span>
-                        </button>
-                        <button class="menu-card" type="button" data-part="bolt-catch" data-part-family="lower">
-                            <span class="menu-card__body"><span class="icon-placeholder menu-card__icon" aria-hidden="true"></span><span class="menu-card__copy"><span class="menu-card__title">Bolt Catch</span></span></span>
-                            <span class="icon-placeholder menu-card__chevron" aria-hidden="true"></span>
-                        </button>
-                        <button class="menu-card" type="button" data-part="trigger-guard" data-part-family="lower">
-                            <span class="menu-card__body"><span class="icon-placeholder menu-card__icon" aria-hidden="true"></span><span class="menu-card__copy"><span class="menu-card__title">Trigger Guard</span></span></span>
-                            <span class="icon-placeholder menu-card__chevron" aria-hidden="true"></span>
-                        </button>
-                        <button class="menu-card" type="button" data-part="takedown-pin" data-part-family="lower">
-                            <span class="menu-card__body"><span class="icon-placeholder menu-card__icon" aria-hidden="true"></span><span class="menu-card__copy"><span class="menu-card__title">Takedown Pin</span></span></span>
-                            <span class="icon-placeholder menu-card__chevron" aria-hidden="true"></span>
-                        </button>
+                        <div class="caliber-dashboard-list">
+                            <button class="caliber-dashboard-button" type="button" data-part="lower-receiver" data-part-family="lower" aria-label="Lower Receiver">
+                                <div class="caliber-dashboard-copy"><p class="caliber-dashboard-title">Lower Receiver</p></div>
+                                <i class="fa-solid fa-chevron-right caliber-dashboard-chevron" aria-hidden="true"></i>
+                            </button>
+                            <button class="caliber-dashboard-button" type="button" data-part="trigger" data-part-family="lower" aria-label="Trigger">
+                                <div class="caliber-dashboard-copy"><p class="caliber-dashboard-title">Trigger</p></div>
+                                <i class="fa-solid fa-chevron-right caliber-dashboard-chevron" aria-hidden="true"></i>
+                            </button>
+                            <button class="caliber-dashboard-button" type="button" data-part="pistol-grip" data-part-family="lower" aria-label="Pistol Grip">
+                                <div class="caliber-dashboard-copy"><p class="caliber-dashboard-title">Pistol Grip</p></div>
+                                <i class="fa-solid fa-chevron-right caliber-dashboard-chevron" aria-hidden="true"></i>
+                            </button>
+                            <button class="caliber-dashboard-button" type="button" data-part="stock" data-part-family="lower" aria-label="Stock">
+                                <div class="caliber-dashboard-copy"><p class="caliber-dashboard-title">Stock</p></div>
+                                <i class="fa-solid fa-chevron-right caliber-dashboard-chevron" aria-hidden="true"></i>
+                            </button>
+                            <button class="caliber-dashboard-button" type="button" data-part="buffer-system" data-part-family="lower" aria-label="Buffer System">
+                                <div class="caliber-dashboard-copy"><p class="caliber-dashboard-title">Buffer System</p></div>
+                                <i class="fa-solid fa-chevron-right caliber-dashboard-chevron" aria-hidden="true"></i>
+                            </button>
+                            <button class="caliber-dashboard-button" type="button" data-part="safety-selector" data-part-family="lower" aria-label="Safety Selector">
+                                <div class="caliber-dashboard-copy"><p class="caliber-dashboard-title">Safety Selector</p></div>
+                                <i class="fa-solid fa-chevron-right caliber-dashboard-chevron" aria-hidden="true"></i>
+                            </button>
+                            <button class="caliber-dashboard-button" type="button" data-part="magazine" data-part-family="lower" aria-label="Magazine">
+                                <div class="caliber-dashboard-copy"><p class="caliber-dashboard-title">Magazine</p></div>
+                                <i class="fa-solid fa-chevron-right caliber-dashboard-chevron" aria-hidden="true"></i>
+                            </button>
+                            <button class="caliber-dashboard-button" type="button" data-part="magazine-release" data-part-family="lower" aria-label="Magazine Release">
+                                <div class="caliber-dashboard-copy"><p class="caliber-dashboard-title">Magazine Release</p></div>
+                                <i class="fa-solid fa-chevron-right caliber-dashboard-chevron" aria-hidden="true"></i>
+                            </button>
+                            <button class="caliber-dashboard-button" type="button" data-part="bolt-catch" data-part-family="lower" aria-label="Bolt Catch">
+                                <div class="caliber-dashboard-copy"><p class="caliber-dashboard-title">Bolt Catch</p></div>
+                                <i class="fa-solid fa-chevron-right caliber-dashboard-chevron" aria-hidden="true"></i>
+                            </button>
+                            <button class="caliber-dashboard-button" type="button" data-part="trigger-guard" data-part-family="lower" aria-label="Trigger Guard">
+                                <div class="caliber-dashboard-copy"><p class="caliber-dashboard-title">Trigger Guard</p></div>
+                                <i class="fa-solid fa-chevron-right caliber-dashboard-chevron" aria-hidden="true"></i>
+                            </button>
+                            <button class="caliber-dashboard-button" type="button" data-part="takedown-pin" data-part-family="lower" aria-label="Takedown Pin">
+                                <div class="caliber-dashboard-copy"><p class="caliber-dashboard-title">Takedown Pin</p></div>
+                                <i class="fa-solid fa-chevron-right caliber-dashboard-chevron" aria-hidden="true"></i>
+                            </button>
+                        </div>
                     </nav>
                 </div>
 
                 <div id="product-view" class="screen-hidden" data-product-slot="">
                     <header class="panel-header">
                         <button class="back-link js-nav-back" type="button" id="product-back" data-back="main">
-                            <span class="back-link__mark" aria-hidden="true"></span>
+                            <i class="fa-solid fa-chevron-left back-link__chevron" aria-hidden="true"></i>
                             Back
                         </button>
                         <div class="eyebrow">
@@ -333,7 +373,7 @@
                 <div id="variant-view" class="screen-hidden">
                     <header class="panel-header">
                         <button class="back-link js-nav-back" type="button" id="variant-back" data-back="product">
-                            <span class="back-link__mark" aria-hidden="true"></span>
+                            <i class="fa-solid fa-chevron-left back-link__chevron" aria-hidden="true"></i>
                             Products
                         </button>
                         <div class="eyebrow">
@@ -342,10 +382,6 @@
                         </div>
                         <h1 id="variant-heading">Select Color</h1>
                         <p class="panel-lead" id="variant-lead">Choose a finish for your selected product.</p>
-                        <div class="variant-context">
-                            <p class="variant-context__label">Selected product</p>
-                            <p class="variant-context__product" id="variant-product-name"></p>
-                        </div>
                         <div class="metallic-divider"></div>
                     </header>
                     <nav id="variant-list" aria-label="Color variants"></nav>
@@ -366,7 +402,6 @@
                     <div class="metallic-divider"></div>
                     <button id="view-build-btn" class="cta-button" type="button">
                         <span>View Build</span>
-                        <span class="icon-placeholder cta-button__icon" aria-hidden="true"></span>
                     </button>
                     <p class="summary-legal">Taxes and shipping calculated at checkout</p>
                 </footer>
@@ -381,7 +416,7 @@
             <div id="sheet-content">
                 <header id="sheet-header">
                     <button class="back-link js-nav-back screen-hidden" id="sheet-back" type="button" data-back="caliber">
-                        <span class="back-link__mark" aria-hidden="true"></span>
+                        <i class="fa-solid fa-chevron-left back-link__chevron" aria-hidden="true"></i>
                         Caliber
                     </button>
                     <h2 id="sheet-title">Select Caliber</h2>
@@ -389,57 +424,105 @@
                 </header>
 
                 <nav id="caliber-group" aria-label="Caliber options">
-                    <button class="calibre-card" type="button" data-caliber="5.56 NATO" data-caliber-id="caliber-556" aria-label="5.56 NATO">
-                        <span class="calibre-card__image" aria-hidden="true"></span>
-                        <span class="calibre-card__text">5.56</span>
-                    </button>
-                    <button class="calibre-card" type="button" data-caliber=".223 Remington" data-caliber-id="caliber-223" aria-label=".223 Remington">
-                        <span class="calibre-card__image" aria-hidden="true"></span>
-                        <span class="calibre-card__text">.223</span>
-                    </button>
-                    <button class="calibre-card" type="button" data-caliber=".300 BLK" data-caliber-id="caliber-300blk" aria-label=".300 BLK">
-                        <span class="calibre-card__image" aria-hidden="true"></span>
-                        <span class="calibre-card__text">.300</span>
-                    </button>
-                    <button class="calibre-card" type="button" data-caliber="9mm Luger" data-caliber-id="caliber-9mm" aria-label="9mm Luger">
-                        <span class="calibre-card__image" aria-hidden="true"></span>
-                        <span class="calibre-card__text">9mm</span>
-                    </button>
+                    <div class="caliber-dashboard-list">
+                        <button class="caliber-dashboard-button" type="button" data-caliber="5.56 NATO" data-caliber-id="caliber-556" aria-label="5.56 NATO">
+                            <div class="caliber-dashboard-copy">
+                                <p class="caliber-dashboard-title">5.56 NATO</p>
+                                <p class="caliber-dashboard-description">Versatile, high-velocity round</p>
+                            </div>
+                            <i class="fa-solid fa-chevron-right caliber-dashboard-chevron" aria-hidden="true"></i>
+                        </button>
+                        <button class="caliber-dashboard-button" type="button" data-caliber=".223 Remington" data-caliber-id="caliber-223" aria-label=".223 Remington">
+                            <div class="caliber-dashboard-copy">
+                                <p class="caliber-dashboard-title">.223 Remington</p>
+                                <p class="caliber-dashboard-description">Precision &amp; accuracy focused</p>
+                            </div>
+                            <i class="fa-solid fa-chevron-right caliber-dashboard-chevron" aria-hidden="true"></i>
+                        </button>
+                        <button class="caliber-dashboard-button" type="button" data-caliber=".300 BLK" data-caliber-id="caliber-300blk" aria-label=".300 BLK">
+                            <div class="caliber-dashboard-copy">
+                                <p class="caliber-dashboard-title">.300 BLK</p>
+                                <p class="caliber-dashboard-description">Subsonic &amp; suppressed builds</p>
+                            </div>
+                            <i class="fa-solid fa-chevron-right caliber-dashboard-chevron" aria-hidden="true"></i>
+                        </button>
+                        <button class="caliber-dashboard-button" type="button" data-caliber="9mm Luger" data-caliber-id="caliber-9mm" aria-label="9mm Luger">
+                            <div class="caliber-dashboard-copy">
+                                <p class="caliber-dashboard-title">9mm Luger</p>
+                                <p class="caliber-dashboard-description">Compact pistol-caliber build</p>
+                            </div>
+                            <i class="fa-solid fa-chevron-right caliber-dashboard-chevron" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </nav>
+
+                <nav id="build-type-group" class="screen-hidden" aria-label="Build type options">
+                    <div class="caliber-dashboard-list">
+                        <button class="caliber-dashboard-button" type="button" data-build-type="partial-build" aria-label="Custom Build">
+                            <div class="caliber-dashboard-copy">
+                                <p class="caliber-dashboard-title">Custom Build</p>
+                                <p class="caliber-dashboard-description">Select only the parts you need</p>
+                            </div>
+                            <i class="fa-solid fa-chevron-right caliber-dashboard-chevron" aria-hidden="true"></i>
+                        </button>
+                        <button class="caliber-dashboard-button" type="button" data-build-type="full-build" aria-label="Complete Build">
+                            <div class="caliber-dashboard-copy">
+                                <p class="caliber-dashboard-title">Complete Build</p>
+                                <p class="caliber-dashboard-description">Start with a complete rifle and customize it</p>
+                            </div>
+                            <i class="fa-solid fa-chevron-right caliber-dashboard-chevron" aria-hidden="true"></i>
+                        </button>
+                    </div>
                 </nav>
 
                 <nav id="main-menu-group" class="screen-hidden" aria-label="Build sections">
                     <section class="menu-section">
                         <h2 class="menu-section__label">Upper</h2>
-                        <div class="menu-section__grid">
-                            <button class="calibre-card" type="button" data-menu="upper-complete" aria-label="Upper complete">
-                                <span class="calibre-card__image" aria-hidden="true"></span>
-                                <span class="calibre-card__text">Complete</span>
+                        <div class="caliber-dashboard-list">
+                            <button class="caliber-dashboard-button" type="button" data-menu="upper-complete" aria-label="Upper complete">
+                                <div class="caliber-dashboard-copy">
+                                    <p class="caliber-dashboard-title">Upper complete</p>
+                                    <p class="caliber-dashboard-description">Fully assembled upper</p>
+                                </div>
+                                <i class="fa-solid fa-chevron-right caliber-dashboard-chevron" aria-hidden="true"></i>
                             </button>
-                            <button class="calibre-card" type="button" data-menu="upper-striped" aria-label="Upper striped">
-                                <span class="calibre-card__image" aria-hidden="true"></span>
-                                <span class="calibre-card__text">Striped</span>
+                            <button class="caliber-dashboard-button" type="button" data-menu="upper-striped" aria-label="Upper striped">
+                                <div class="caliber-dashboard-copy">
+                                    <p class="caliber-dashboard-title">Upper striped</p>
+                                    <p class="caliber-dashboard-description">Stripped upper receiver</p>
+                                </div>
+                                <i class="fa-solid fa-chevron-right caliber-dashboard-chevron" aria-hidden="true"></i>
                             </button>
                         </div>
                     </section>
                     <section class="menu-section">
                         <h2 class="menu-section__label">Lower</h2>
-                        <div class="menu-section__grid">
-                            <button class="calibre-card" type="button" data-menu="lower-complete" aria-label="Lower complete">
-                                <span class="calibre-card__image" aria-hidden="true"></span>
-                                <span class="calibre-card__text">Complete</span>
+                        <div class="caliber-dashboard-list">
+                            <button class="caliber-dashboard-button" type="button" data-menu="lower-complete" aria-label="Lower complete">
+                                <div class="caliber-dashboard-copy">
+                                    <p class="caliber-dashboard-title">Lower complete</p>
+                                    <p class="caliber-dashboard-description">Fully assembled lower</p>
+                                </div>
+                                <i class="fa-solid fa-chevron-right caliber-dashboard-chevron" aria-hidden="true"></i>
                             </button>
-                            <button class="calibre-card" type="button" data-menu="lower-striped" aria-label="Lower striped">
-                                <span class="calibre-card__image" aria-hidden="true"></span>
-                                <span class="calibre-card__text">Striped</span>
+                            <button class="caliber-dashboard-button" type="button" data-menu="lower-striped" aria-label="Lower striped">
+                                <div class="caliber-dashboard-copy">
+                                    <p class="caliber-dashboard-title">Lower striped</p>
+                                    <p class="caliber-dashboard-description">Stripped lower receiver</p>
+                                </div>
+                                <i class="fa-solid fa-chevron-right caliber-dashboard-chevron" aria-hidden="true"></i>
                             </button>
                         </div>
                     </section>
                     <section class="menu-section menu-section--gear">
                         <h2 class="menu-section__label">Gear</h2>
-                        <div class="menu-section__grid">
-                            <button class="calibre-card" type="button" data-menu="gear" aria-label="Gear">
-                                <span class="calibre-card__image" aria-hidden="true"></span>
-                                <span class="calibre-card__text">Gear</span>
+                        <div class="caliber-dashboard-list">
+                            <button class="caliber-dashboard-button" type="button" data-menu="gear" aria-label="Gear">
+                                <div class="caliber-dashboard-copy">
+                                    <p class="caliber-dashboard-title">Gear</p>
+                                    <p class="caliber-dashboard-description">Optics, Lights, Accessories</p>
+                                </div>
+                                <i class="fa-solid fa-chevron-right caliber-dashboard-chevron" aria-hidden="true"></i>
                             </button>
                         </div>
                     </section>
@@ -447,120 +530,99 @@
 
                 <nav id="part-upper-group" class="part-group screen-hidden" aria-label="Stripped upper parts">
                     <p class="part-section-label">Required</p>
-                    <div class="part-section-cards">
-                        <button class="component-card" type="button" data-part="upper-receiver" data-part-family="upper">
-                            <span class="component-card__icon" aria-hidden="true"></span>
-                            <span class="component-card__name">Upper Receiver</span>
-                            <span class="icon-placeholder component-card__chevron" aria-hidden="true"></span>
+                    <div class="caliber-dashboard-list">
+                        <button class="caliber-dashboard-button" type="button" data-part="upper-receiver" data-part-family="upper" aria-label="Upper Receiver">
+                            <div class="caliber-dashboard-copy"><p class="caliber-dashboard-title">Upper Receiver</p></div>
+                            <i class="fa-solid fa-chevron-right caliber-dashboard-chevron" aria-hidden="true"></i>
                         </button>
-                        <button class="component-card" type="button" data-part="barrel" data-part-family="upper">
-                            <span class="component-card__icon" aria-hidden="true"></span>
-                            <span class="component-card__name">Barrel</span>
-                            <span class="icon-placeholder component-card__chevron" aria-hidden="true"></span>
+                        <button class="caliber-dashboard-button" type="button" data-part="barrel" data-part-family="upper" aria-label="Barrel">
+                            <div class="caliber-dashboard-copy"><p class="caliber-dashboard-title">Barrel</p></div>
+                            <i class="fa-solid fa-chevron-right caliber-dashboard-chevron" aria-hidden="true"></i>
                         </button>
-                        <button class="component-card" type="button" data-part="handguard" data-part-family="upper">
-                            <span class="component-card__icon" aria-hidden="true"></span>
-                            <span class="component-card__name">Handguard</span>
-                            <span class="icon-placeholder component-card__chevron" aria-hidden="true"></span>
+                        <button class="caliber-dashboard-button" type="button" data-part="handguard" data-part-family="upper" aria-label="Handguard">
+                            <div class="caliber-dashboard-copy"><p class="caliber-dashboard-title">Handguard</p></div>
+                            <i class="fa-solid fa-chevron-right caliber-dashboard-chevron" aria-hidden="true"></i>
                         </button>
-                        <button class="component-card" type="button" data-part="gas-block" data-part-family="upper">
-                            <span class="component-card__icon" aria-hidden="true"></span>
-                            <span class="component-card__name">Gas Block</span>
-                            <span class="icon-placeholder component-card__chevron" aria-hidden="true"></span>
+                        <button class="caliber-dashboard-button" type="button" data-part="gas-block" data-part-family="upper" aria-label="Gas Block">
+                            <div class="caliber-dashboard-copy"><p class="caliber-dashboard-title">Gas Block</p></div>
+                            <i class="fa-solid fa-chevron-right caliber-dashboard-chevron" aria-hidden="true"></i>
                         </button>
-                        <button class="component-card" type="button" data-part="gas-tube" data-part-family="upper">
-                            <span class="component-card__icon" aria-hidden="true"></span>
-                            <span class="component-card__name">Gas Tube</span>
-                            <span class="icon-placeholder component-card__chevron" aria-hidden="true"></span>
+                        <button class="caliber-dashboard-button" type="button" data-part="gas-tube" data-part-family="upper" aria-label="Gas Tube">
+                            <div class="caliber-dashboard-copy"><p class="caliber-dashboard-title">Gas Tube</p></div>
+                            <i class="fa-solid fa-chevron-right caliber-dashboard-chevron" aria-hidden="true"></i>
                         </button>
-                        <button class="component-card" type="button" data-part="muzzle-device" data-part-family="upper">
-                            <span class="component-card__icon" aria-hidden="true"></span>
-                            <span class="component-card__name">Muzzle Device</span>
-                            <span class="icon-placeholder component-card__chevron" aria-hidden="true"></span>
+                        <button class="caliber-dashboard-button" type="button" data-part="muzzle-device" data-part-family="upper" aria-label="Muzzle Device">
+                            <div class="caliber-dashboard-copy"><p class="caliber-dashboard-title">Muzzle Device</p></div>
+                            <i class="fa-solid fa-chevron-right caliber-dashboard-chevron" aria-hidden="true"></i>
                         </button>
-                        <button class="component-card" type="button" data-part="bolt-carrier-group" data-part-family="upper">
-                            <span class="component-card__icon" aria-hidden="true"></span>
-                            <span class="component-card__name">Bolt Carrier Group</span>
-                            <span class="icon-placeholder component-card__chevron" aria-hidden="true"></span>
+                        <button class="caliber-dashboard-button" type="button" data-part="bolt-carrier-group" data-part-family="upper" aria-label="Bolt Carrier Group">
+                            <div class="caliber-dashboard-copy"><p class="caliber-dashboard-title">Bolt Carrier Group</p></div>
+                            <i class="fa-solid fa-chevron-right caliber-dashboard-chevron" aria-hidden="true"></i>
                         </button>
-                        <button class="component-card" type="button" data-part="charging-handle" data-part-family="upper">
-                            <span class="component-card__icon" aria-hidden="true"></span>
-                            <span class="component-card__name">Charging Handle</span>
-                            <span class="icon-placeholder component-card__chevron" aria-hidden="true"></span>
+                        <button class="caliber-dashboard-button" type="button" data-part="charging-handle" data-part-family="upper" aria-label="Charging Handle">
+                            <div class="caliber-dashboard-copy"><p class="caliber-dashboard-title">Charging Handle</p></div>
+                            <i class="fa-solid fa-chevron-right caliber-dashboard-chevron" aria-hidden="true"></i>
                         </button>
-                        <button class="component-card" type="button" data-part="forward-assist" data-part-family="upper">
-                            <span class="component-card__icon" aria-hidden="true"></span>
-                            <span class="component-card__name">Forward Assist</span>
-                            <span class="icon-placeholder component-card__chevron" aria-hidden="true"></span>
+                        <button class="caliber-dashboard-button" type="button" data-part="forward-assist" data-part-family="upper" aria-label="Forward Assist">
+                            <div class="caliber-dashboard-copy"><p class="caliber-dashboard-title">Forward Assist</p></div>
+                            <i class="fa-solid fa-chevron-right caliber-dashboard-chevron" aria-hidden="true"></i>
                         </button>
                     </div>
                     <p class="part-section-label">Optional</p>
-                    <div class="part-section-cards">
-                        <button class="component-card" type="button" data-part="ejection-port-cover" data-part-family="upper">
-                            <span class="component-card__icon" aria-hidden="true"></span>
-                            <span class="component-card__name">Ejection Port Cover</span>
-                            <span class="icon-placeholder component-card__chevron" aria-hidden="true"></span>
+                    <div class="caliber-dashboard-list">
+                        <button class="caliber-dashboard-button" type="button" data-part="ejection-port-cover" data-part-family="upper" aria-label="Ejection Port Cover">
+                            <div class="caliber-dashboard-copy"><p class="caliber-dashboard-title">Ejection Port Cover</p></div>
+                            <i class="fa-solid fa-chevron-right caliber-dashboard-chevron" aria-hidden="true"></i>
                         </button>
                     </div>
                 </nav>
 
                 <nav id="part-lower-group" class="part-group screen-hidden" aria-label="Stripped lower parts">
                     <p class="part-section-label">Required</p>
-                    <div class="part-section-cards">
-                        <button class="component-card" type="button" data-part="lower-receiver" data-part-family="lower">
-                            <span class="component-card__icon" aria-hidden="true"></span>
-                            <span class="component-card__name">Lower Receiver</span>
-                            <span class="icon-placeholder component-card__chevron" aria-hidden="true"></span>
+                    <div class="caliber-dashboard-list">
+                        <button class="caliber-dashboard-button" type="button" data-part="lower-receiver" data-part-family="lower" aria-label="Lower Receiver">
+                            <div class="caliber-dashboard-copy"><p class="caliber-dashboard-title">Lower Receiver</p></div>
+                            <i class="fa-solid fa-chevron-right caliber-dashboard-chevron" aria-hidden="true"></i>
                         </button>
-                        <button class="component-card" type="button" data-part="trigger" data-part-family="lower">
-                            <span class="component-card__icon" aria-hidden="true"></span>
-                            <span class="component-card__name">Trigger</span>
-                            <span class="icon-placeholder component-card__chevron" aria-hidden="true"></span>
+                        <button class="caliber-dashboard-button" type="button" data-part="trigger" data-part-family="lower" aria-label="Trigger">
+                            <div class="caliber-dashboard-copy"><p class="caliber-dashboard-title">Trigger</p></div>
+                            <i class="fa-solid fa-chevron-right caliber-dashboard-chevron" aria-hidden="true"></i>
                         </button>
-                        <button class="component-card" type="button" data-part="pistol-grip" data-part-family="lower">
-                            <span class="component-card__icon" aria-hidden="true"></span>
-                            <span class="component-card__name">Pistol Grip</span>
-                            <span class="icon-placeholder component-card__chevron" aria-hidden="true"></span>
+                        <button class="caliber-dashboard-button" type="button" data-part="pistol-grip" data-part-family="lower" aria-label="Pistol Grip">
+                            <div class="caliber-dashboard-copy"><p class="caliber-dashboard-title">Pistol Grip</p></div>
+                            <i class="fa-solid fa-chevron-right caliber-dashboard-chevron" aria-hidden="true"></i>
                         </button>
-                        <button class="component-card" type="button" data-part="stock" data-part-family="lower">
-                            <span class="component-card__icon" aria-hidden="true"></span>
-                            <span class="component-card__name">Stock</span>
-                            <span class="icon-placeholder component-card__chevron" aria-hidden="true"></span>
+                        <button class="caliber-dashboard-button" type="button" data-part="stock" data-part-family="lower" aria-label="Stock">
+                            <div class="caliber-dashboard-copy"><p class="caliber-dashboard-title">Stock</p></div>
+                            <i class="fa-solid fa-chevron-right caliber-dashboard-chevron" aria-hidden="true"></i>
                         </button>
-                        <button class="component-card" type="button" data-part="buffer-system" data-part-family="lower">
-                            <span class="component-card__icon" aria-hidden="true"></span>
-                            <span class="component-card__name">Buffer System</span>
-                            <span class="icon-placeholder component-card__chevron" aria-hidden="true"></span>
+                        <button class="caliber-dashboard-button" type="button" data-part="buffer-system" data-part-family="lower" aria-label="Buffer System">
+                            <div class="caliber-dashboard-copy"><p class="caliber-dashboard-title">Buffer System</p></div>
+                            <i class="fa-solid fa-chevron-right caliber-dashboard-chevron" aria-hidden="true"></i>
                         </button>
-                        <button class="component-card" type="button" data-part="safety-selector" data-part-family="lower">
-                            <span class="component-card__icon" aria-hidden="true"></span>
-                            <span class="component-card__name">Safety Selector</span>
-                            <span class="icon-placeholder component-card__chevron" aria-hidden="true"></span>
+                        <button class="caliber-dashboard-button" type="button" data-part="safety-selector" data-part-family="lower" aria-label="Safety Selector">
+                            <div class="caliber-dashboard-copy"><p class="caliber-dashboard-title">Safety Selector</p></div>
+                            <i class="fa-solid fa-chevron-right caliber-dashboard-chevron" aria-hidden="true"></i>
                         </button>
-                        <button class="component-card" type="button" data-part="magazine" data-part-family="lower">
-                            <span class="component-card__icon" aria-hidden="true"></span>
-                            <span class="component-card__name">Magazine</span>
-                            <span class="icon-placeholder component-card__chevron" aria-hidden="true"></span>
+                        <button class="caliber-dashboard-button" type="button" data-part="magazine" data-part-family="lower" aria-label="Magazine">
+                            <div class="caliber-dashboard-copy"><p class="caliber-dashboard-title">Magazine</p></div>
+                            <i class="fa-solid fa-chevron-right caliber-dashboard-chevron" aria-hidden="true"></i>
                         </button>
-                        <button class="component-card" type="button" data-part="magazine-release" data-part-family="lower">
-                            <span class="component-card__icon" aria-hidden="true"></span>
-                            <span class="component-card__name">Magazine Release</span>
-                            <span class="icon-placeholder component-card__chevron" aria-hidden="true"></span>
+                        <button class="caliber-dashboard-button" type="button" data-part="magazine-release" data-part-family="lower" aria-label="Magazine Release">
+                            <div class="caliber-dashboard-copy"><p class="caliber-dashboard-title">Magazine Release</p></div>
+                            <i class="fa-solid fa-chevron-right caliber-dashboard-chevron" aria-hidden="true"></i>
                         </button>
-                        <button class="component-card" type="button" data-part="bolt-catch" data-part-family="lower">
-                            <span class="component-card__icon" aria-hidden="true"></span>
-                            <span class="component-card__name">Bolt Catch</span>
-                            <span class="icon-placeholder component-card__chevron" aria-hidden="true"></span>
+                        <button class="caliber-dashboard-button" type="button" data-part="bolt-catch" data-part-family="lower" aria-label="Bolt Catch">
+                            <div class="caliber-dashboard-copy"><p class="caliber-dashboard-title">Bolt Catch</p></div>
+                            <i class="fa-solid fa-chevron-right caliber-dashboard-chevron" aria-hidden="true"></i>
                         </button>
-                        <button class="component-card" type="button" data-part="trigger-guard" data-part-family="lower">
-                            <span class="component-card__icon" aria-hidden="true"></span>
-                            <span class="component-card__name">Trigger Guard</span>
-                            <span class="icon-placeholder component-card__chevron" aria-hidden="true"></span>
+                        <button class="caliber-dashboard-button" type="button" data-part="trigger-guard" data-part-family="lower" aria-label="Trigger Guard">
+                            <div class="caliber-dashboard-copy"><p class="caliber-dashboard-title">Trigger Guard</p></div>
+                            <i class="fa-solid fa-chevron-right caliber-dashboard-chevron" aria-hidden="true"></i>
                         </button>
-                        <button class="component-card" type="button" data-part="takedown-pin" data-part-family="lower">
-                            <span class="component-card__icon" aria-hidden="true"></span>
-                            <span class="component-card__name">Takedown Pin</span>
-                            <span class="icon-placeholder component-card__chevron" aria-hidden="true"></span>
+                        <button class="caliber-dashboard-button" type="button" data-part="takedown-pin" data-part-family="lower" aria-label="Takedown Pin">
+                            <div class="caliber-dashboard-copy"><p class="caliber-dashboard-title">Takedown Pin</p></div>
+                            <i class="fa-solid fa-chevron-right caliber-dashboard-chevron" aria-hidden="true"></i>
                         </button>
                     </div>
                 </nav>
@@ -568,10 +630,6 @@
                 <nav id="product-group" class="screen-hidden" aria-label="Products"></nav>
 
                 <div id="variant-mobile-block" class="screen-hidden">
-                    <div class="variant-context">
-                        <p class="variant-context__label">Selected product</p>
-                        <p class="variant-context__product" id="variant-product-name-mobile"></p>
-                    </div>
                     <nav id="variant-group" aria-label="Color variants"></nav>
                 </div>
 
@@ -581,7 +639,7 @@
                         <span class="sheet-summary__price">$1,782.16</span>
                     </div>
                     <button id="cart-button" class="icon-cta" type="button" aria-label="View build">
-                        <span class="icon-placeholder icon-cta__icon" aria-hidden="true"></span>
+                        <img class="icon-cta__icon" src="./assets/icons/icon-shoppingCart.svg" width="22" height="22" alt="" aria-hidden="true" draggable="false">
                     </button>
                 </footer>
             </div>
@@ -591,7 +649,7 @@
             <div class="cart-panel">
                 <div class="cart-panel__top">
                     <button class="back-link js-cart-close" type="button">
-                        <span class="back-link__mark" aria-hidden="true"></span>
+                        <i class="fa-solid fa-chevron-left back-link__chevron" aria-hidden="true"></i>
                         Back to Build
                     </button>
                 </div>
