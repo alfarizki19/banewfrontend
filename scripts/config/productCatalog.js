@@ -53,6 +53,42 @@
                 meshId: "BRL003001",
                 name: "Ballistic Advantage AR-15 Modern Series 13.7\" 5.56 NATO Barrel, Government Contour, Mid Length",
                 price: 0
+            },
+            {
+                id: "BRL003002",
+                meshId: "BRL003002",
+                name: "Ballistic Advantage Modern Series 10.5\" 5.56 NATO Barrel, Government Profile, Carbine Length",
+                price: 0
+            },
+            {
+                id: "BRL006001",
+                meshId: "BRL006001",
+                name: "CMMG 5.56mm MR 12.5\" Barrel Sub-Assembly, Nitride",
+                price: 0
+            },
+            {
+                id: "BRL006002",
+                meshId: "BRL006002",
+                name: "CMMG 5.56mm MT 18\" Barrel Sub-Assembly, 416 S/S",
+                price: 0
+            },
+            {
+                id: "BRL013001",
+                meshId: "BRL013001",
+                name: "Guntec AR-15 Barrel, 16\" 5.56mm, M4 Contour Carbine Length 1/2-28 Thread",
+                price: 0
+            },
+            {
+                id: "BRL003003",
+                meshId: "BRL003003",
+                name: "Ballistic Advantage Modern Series 14.7\" 5.56 NATO Barrel, Pencil Profile, Mid Length",
+                price: 0
+            },
+            {
+                id: "BRL003004",
+                meshId: "BRL003004",
+                name: "Ballistic Advantage Modern Series 16\" 5.56 NATO Barrel, Pencil Profile, Mid Length",
+                price: 0
             }
         ],
         magazine: [
@@ -114,6 +150,20 @@
                 id: "TGG005001",
                 meshId: "TGG005001",
                 name: "Bushmaster AR-15 Trigger Guard Assembly",
+                price: 0
+            }
+        ],
+        "takedown-pin": [
+            {
+                id: "TDP001001",
+                meshId: "TDP001001",
+                name: "Aero Precision AR15 EZ Install Pivot/Takedown Pin Set",
+                price: 0
+            },
+            {
+                id: "TDP006001",
+                meshId: "TDP006001",
+                name: "CMMG AR-15 HD Pivot And Takedown Pins Kit",
                 price: 0
             }
         ]

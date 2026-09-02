@@ -1,7 +1,7 @@
 (function () {
     "use strict";
 
-    window.SKETCHFAB_MODEL_UID = "b7f49c3b53924021ad64ce66bbbe384d";
+    window.SKETCHFAB_MODEL_UID = "b426f4e50646455f930a2d3d7b1f9ca8";
 
     // Premium white-label embed — hide Sketchfab chrome inside iframe.
     window.SKETCHFAB_EMBED_OPTS = {

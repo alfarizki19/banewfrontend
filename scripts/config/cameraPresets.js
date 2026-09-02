@@ -3,7 +3,7 @@
 
     // Sync with workspace/sketchfab/camera-position/presets.json
     window.CAMERA_PRESETS = {
-        modelUid: "b7f49c3b53924021ad64ce66bbbe384d",
+        modelUid: "b426f4e50646455f930a2d3d7b1f9ca8",
         fovDefault: 45,
         transitionDuration: 0.5,
         parts: {
@@ -65,6 +65,11 @@
             "trigger-guard": {
                 position: [0.115, -0.082, 0.045],
                 target: [-0.007, 0.009, -0.045],
+                fov: 45
+            },
+            "takedown-pin": {
+                position: [-0.13, -0.185, -0.002],
+                target: [0.026, -0.008, -0.017],
                 fov: 45
             }
         }

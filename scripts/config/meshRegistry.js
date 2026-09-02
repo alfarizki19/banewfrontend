@@ -73,7 +73,15 @@
             partSlot: "barrel",
             single: true,
             variants: null,
-            competitors: ["BRL003001"]
+            competitors: [
+                "BRL003001",
+                "BRL003002",
+                "BRL006001",
+                "BRL006002",
+                "BRL013001",
+                "BRL003003",
+                "BRL003004"
+            ]
         },
         BRL003001: {
             section: "upperstripped",
@@ -82,7 +90,117 @@
             partSlot: "barrel",
             single: true,
             variants: null,
-            competitors: ["BRL002001"]
+            competitors: [
+                "BRL002001",
+                "BRL003002",
+                "BRL006001",
+                "BRL006002",
+                "BRL013001",
+                "BRL003003",
+                "BRL003004"
+            ]
+        },
+        BRL003002: {
+            section: "upperstripped",
+            part: "barrel",
+            material: "barrel",
+            partSlot: "barrel",
+            single: true,
+            variants: null,
+            competitors: [
+                "BRL002001",
+                "BRL003001",
+                "BRL006001",
+                "BRL006002",
+                "BRL013001",
+                "BRL003003",
+                "BRL003004"
+            ]
+        },
+        BRL006001: {
+            section: "upperstripped",
+            part: "barrel",
+            material: "barrel",
+            partSlot: "barrel",
+            single: true,
+            variants: null,
+            competitors: [
+                "BRL002001",
+                "BRL003001",
+                "BRL003002",
+                "BRL006002",
+                "BRL013001",
+                "BRL003003",
+                "BRL003004"
+            ]
+        },
+        BRL006002: {
+            section: "upperstripped",
+            part: "barrel",
+            material: "barrel",
+            partSlot: "barrel",
+            single: true,
+            variants: null,
+            competitors: [
+                "BRL002001",
+                "BRL003001",
+                "BRL003002",
+                "BRL006001",
+                "BRL013001",
+                "BRL003003",
+                "BRL003004"
+            ]
+        },
+        BRL013001: {
+            section: "upperstripped",
+            part: "barrel",
+            material: "barrel",
+            partSlot: "barrel",
+            single: true,
+            variants: null,
+            competitors: [
+                "BRL002001",
+                "BRL003001",
+                "BRL003002",
+                "BRL006001",
+                "BRL006002",
+                "BRL003003",
+                "BRL003004"
+            ]
+        },
+        BRL003003: {
+            section: "upperstripped",
+            part: "barrel",
+            material: "barrel",
+            partSlot: "barrel",
+            single: true,
+            variants: null,
+            competitors: [
+                "BRL002001",
+                "BRL003001",
+                "BRL003002",
+                "BRL006001",
+                "BRL006002",
+                "BRL013001",
+                "BRL003004"
+            ]
+        },
+        BRL003004: {
+            section: "upperstripped",
+            part: "barrel",
+            material: "barrel",
+            partSlot: "barrel",
+            single: true,
+            variants: null,
+            competitors: [
+                "BRL002001",
+                "BRL003001",
+                "BRL003002",
+                "BRL006001",
+                "BRL006002",
+                "BRL013001",
+                "BRL003003"
+            ]
         },
         CGH010001: {
             section: "upperstripped",
@@ -137,6 +255,24 @@
             single: false,
             variants: ["black"],
             competitors: ["TGG004001"]
+        },
+        TDP001001: {
+            section: "lowerstripped",
+            part: "takedown-pin",
+            material: "takedown-pin",
+            partSlot: "takedown-pin",
+            single: true,
+            variants: null,
+            competitors: ["TDP006001"]
+        },
+        TDP006001: {
+            section: "lowerstripped",
+            part: "takedown-pin",
+            material: "takedown-pin",
+            partSlot: "takedown-pin",
+            single: true,
+            variants: null,
+            competitors: ["TDP001001"]
         }
     };
 
